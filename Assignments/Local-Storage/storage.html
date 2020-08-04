@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Activity</title>
+    <link rel="stylesheet" href="storage.css">
+</head>
+
+<body onload="list()">
+        <h2>Todos to do</h2>
+        <hr>
+                <label for="todo">Todo Activity</label>
+                <input type="text" id="todo" required>
+                <button onclick="submit()">Submit</button>
+                <br><br>
+                <button id="done" onclick="done()">Done</button>
+                <br><div id ="pending"></div>
+                <div id="completed"></div>
+    <script>
+        function submit(){
+            localStorage.pending =document.getElementById("todo").value
+            document.getElementById("pending").innerHTML=localStorage.pending
+        }
+        function done(){
+            localStorage.completed= document.getElementById("pending").innerText
+            document.getElementById("completed").innerText=localStorage.completed
+           localStorage.removeItem("pending")
+           document.getElementById("pending").innerText=""
+        }
+        function list(){
+            if(localStorage.pending){
+                document.getElementById("pending").innerText=localStorage.pending
+            }else{
+                document.getElementById("pending").innerText=""
+            }
+            if(localStorage.completed){
+                document.getElementById("completed").innerText=localStorage.completed
+            }else{
+                document.getElementById("completed").innerText=""
+            }
+        }
+    </script>
+</body>
+
+</html>
