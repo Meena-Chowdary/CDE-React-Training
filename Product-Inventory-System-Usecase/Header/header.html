@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="../images/logo.png">
+        <a class="active" onclick="dashboard()">DashBoard</a>
+        <div class="dropdown">
+            <button class="dropbtn">Category
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Mobiles</a>
+              <a href="#">Laptops</a>
+              <a href="#">Cameras</a>
+            </div>
+        </div> 
+        <a href="#">Add Product</a>
+        <input type="text" placeholder="Search..">
+        <a id="profile">Profile</a>
+    </div>
+    <div class="card" id="panel">
+        <p>Mobiles</p>
+        <div class="bar">
+            <div class="skills mobiles">90%</div>
+        </div>
+
+        <p>Laptops</p>
+        <div class="bar">
+            <div class="skills laptops">80%</div>
+        </div>
+
+        <p>Cameras</p>
+        <div class="bar">
+            <div class="skills cameras">65%</div>
+        </div>
+    </div>
+    <script>
+        function dashboard() {
+            document.getElementById("panel").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

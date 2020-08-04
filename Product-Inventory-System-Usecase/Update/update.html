@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <link rel="stylesheet" href="update.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="../images/logo.png">
+        <a href="#">DashBoard</a>
+        <div class="dropdown">
+            <button class="dropbtn">Category 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Mobiles</a>
+              <a href="#">Laptops</a>
+              <a href="#">Cameras</a>
+            </div>
+        </div> 
+        <a href="#">Add Product</a>
+        <input type="text" placeholder="Search..">
+        <a id="profile">Profile</a>
+    </div>
+    <section>
+        <div class="update-form">
+            <form name="form" onsubmit="update()" class="text-center" style="color: #757575;">
+                <h3>Update Product</h3>
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" required 
+                                placeholder="Product Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="descr" class="form-control" required 
+                                placeholder="Product Description *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="category" class="form-control" required 
+                                placeholder="Product Category *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="price" class="form-control" required placeholder="Product Price *"
+                                value="" />
+                        </div>
+                        <div class="form-group submit">
+                            <input type="submit" name="btnSubmit"  value="Update" />
+                        </div>
+            </form>
+            <button (click)="list()" class="btn btn-primary">Cancel</button><br>
+        </div>
+    </section>
+    <script>
+        update = () => {
+            alert('Product Updated successfully!!')
+        }
+    </script>
+</body>
+
+</html>
