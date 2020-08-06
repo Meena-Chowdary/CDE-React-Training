@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "productId": 1,
+      "productName": "Phone",
+      "productPrice": 10000,
+      "description":"Mobiles to use",
+      "category": "Mobiles",
+      "stock": 200
+    },
+    {
+      "productId": 2,
+      "productName": "HP",
+      "productPrice": 70000,
+      "description":"Laptops to use",
+      "categoryName": "Laptop",
+      "stock": 200
+    },
+    {
+      "productId": 3,
+      "productName": "Nikon D3500 DX-Format DSLR ",
+      "description":"Camera to use",
+      "productPrice": 40000,
+      "categoryName": "Camera",
+      "stock": 200
+    },
+    {
+      "productId": 4,
+      "productName": "Phone",
+      "description":"Mobiles to use",
+      "productPrice": 10000,
+      "categoryName": "Mobiles",
+      "stock": 200
+    },
+    {
+      "productId": 5,
+      "productName": "HP",
+      "description":"Laptop to use",
+      "productPrice": 70000,
+      "categoryName": "Laptop",
+      "stock": 200
+    },
+    {
+      "productId": 6,
+      "productName": "Nikon D3500 DX-Format DSLR ",
+      "description":"Camera to use",
+      "productPrice": 40000,
+      "categoryName": "Camera",
+      "stock": 200
+    }
+  ]
+}
