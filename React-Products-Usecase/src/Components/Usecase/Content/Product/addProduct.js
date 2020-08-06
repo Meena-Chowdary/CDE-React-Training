@@ -1,11 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 class AddProduct extends React.Component {
-    state = {  }
-    add = () => {
-        alert('Product Added!!')
+    constructor(props){
+        super(props)
+        this.state ={
+            name:'',
+            price:0,
+            category:''
+        }
     }
-    render() { 
+    addProduct=()=>{
+        console.log('Add product via axios and post')
+        let productRequestBody = {
+            "productName": this.state.name,
+            "productPrice": this.state.price,
+            "categoryName": this.state.category
+        }
+        axios.post('http://localhost:3000/products', productRequestBody)
+                .then(response=>{
+                    console.log(response);
+                    this.props.history.push('/products')
+                }, error=>{
+                    console.error(error);
+                })
+    }    
+render() { 
         const textStyle = {
             width:'40%',
             padding:'12px 20px',
@@ -22,29 +42,19 @@ class AddProduct extends React.Component {
                                 placeholder="Product Name *" />
                         </div><br/>
                         <div>
-                        <label> Description</label> &nbsp;
-                            <input type="text" style={textStyle} required min="5"
-                                placeholder="Product Description *"  />
+                        <label> Price</label> &nbsp;
+                            <input type="text" style={textStyle} required placeholder="Product Price *"
+                                 />
                         </div><br/>
                         <div>
                         <label> Category</label> &nbsp;
-                            <select id="category" name="category" style={textStyle}>
-                                <option value="select">--select--</option>
-                                <option value="mobiles">Mobiles</option>
-                                <option value="laptops">Laptops</option>
-                                <option value="cameras">Cameras</option>
-                            </select>
-                            
-                        </div><br/>
-                        <div>
-                        <label> Price</label> &nbsp;
-                            <input type="text" style={textStyle} required placeholder="Product Price *"
+                            <input type="text" style={textStyle} required placeholder="Product Category *"
                                  />
                         </div><br/>
                         
                         <div>
                             <input type="submit" style={{padding:'10px 15px',backgroundColor: '#4CAF50',
-                            color: 'white',cursor:'pointer',border:'none'}} value="Add" />
+                            color: 'white',cursor:'pointer',border:'none'}} value="Add" onClick={this.addProduct} />
                         </div>
                         <br/>
                         <Link to="/products">
