@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './login.css';
 class Login extends React.Component {
     state = {}
     render() {
@@ -13,22 +13,25 @@ class Login extends React.Component {
             backgroundSize: 'cover',
             textAlign:'center'
         }
-const textStyle = {
-            padding:'12px 20px',
-           // display: 'inline-block'
+        const inputStyle = {
+            padding:'10px',
+            marginTop:'20px',
+            textAlign:'center',
+            background:'rgb(189, 188, 188)',
+            border:'0px'
         }
     return(
         <div style={bodyStyle}>
-            <form name="form" style={{textAlign:'center',margin:'60px',backgroundColor:'#F1F1F1',padding:'10px'}}>
-                <h3>LogIn</h3>
+        <div class="login">
+            <form name="form">
                         <div>
-                            <label> User Name</label> &nbsp;
-                            <input type="text" style={textStyle} id="username"
+                            <label>User Name</label> &nbsp;
+                            <input type="text" id="username" style={inputStyle}
                                 placeholder="User Name *" required/>
                         </div><br/>
                         <div>
-                        <label> Password</label> &nbsp; &nbsp;
-                            <input type="password" style={textStyle} 
+                        <label>Password</label> &nbsp; &nbsp;
+                            <input type="password"  style={inputStyle}
                                 placeholder="Password *"  required/>
                         </div><br/>
                         <Link to="/dashboard">
@@ -38,9 +41,9 @@ const textStyle = {
                             </button>
                         </Link>
                        <br/><br/>
-                        <Link to="/register" style={{ textDecoration:'none'}}>Register</Link>
+                        <Link to="/register" style={{ textDecoration:'none', marginBottom:'30px'}}>Register</Link>
             </form>
-            
+            </div>
         </div>
         );
     }

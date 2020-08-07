@@ -1,45 +1,40 @@
 import React from 'react';
 class ProductDetails extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state ={
+        this.state = {
         }
-       
     }
 
-    deleteCurrentProduct=()=>{
-        console.log("delete product with id: " + this.props.id);
+    deleteCurrentProduct = () => {
         this.props.deleteId(this.props.id)
     }
 
-    editProductWithId=()=>{
-        console.log("edit product with id: " + this.props.id);
+    editProductWithId = () => {
         this.props.editId(this.props.id)
     }
 
-    render() { 
-        return ( 
+    render() {
+        const tableStyle = {
+            padding: '15px 30px'
+        }
+        return (
             <tr>
-                <td>{this.props.id} </td>
-                <td>{this.props.name} </td>
-                <td>{this.props.price}</td>
-                <td>{this.props.category}</td>
-                <td>
-                    <button >Since + </button>
-                </td>
-                <td>
-                    <button>Since - </button>
-                </td>
+                <td style={tableStyle}>{this.props.id} </td>
+                <td style={tableStyle}>{this.props.name} </td>
+                <td style={tableStyle}>{this.props.price}</td>
+                <td style={tableStyle}>{this.props.category}</td>
+                <td style={tableStyle}>{this.props.description}</td>
                 <td>
                     <button onClick={this.editProductWithId}>Edit</button>
                 </td>
                 <td>
                     <button onClick={this.deleteCurrentProduct}>Del</button>
                 </td>
-                
-            </tr>    
+
+            </tr>
         )
     }
 }
- 
+
 export default ProductDetails;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './register.css';
 class Register extends React.Component {
     state = {}
     register = () => {
@@ -15,37 +16,41 @@ class Register extends React.Component {
             backgroundSize: 'cover',
             textAlign:'center'
         }
-const textStyle = {
-            padding:'12px 20px',
-           // display: 'inline-block'
-        }
+    const textStyle = {
+        padding:'10px',
+        marginTop:'20px',
+        textAlign:'center',
+        background:'rgb(189, 188, 188)',
+        border:'0px'
+    }
     return(
         <div style={bodyStyle}>
-            <form name="form" onSubmit={this.register} style={{textAlign:'center',margin:'60px',backgroundColor:'#F1F1F1',padding:'10px'}}>
+        <div class="register">
+            <form name="form" onSubmit={this.register}>
                 <h3>Register</h3>
                         <div>
-                            <label> User Name</label> &nbsp;
+                            <label> User Name </label> 
                             <input type="text" style={textStyle} id="username"
                                 placeholder="User Name *" required/>
                         </div><br/>
                         <div>
-                        <label> Password</label> &nbsp;
+                        <label> Password </label> 
                             <input type="password" style={textStyle} 
                                 placeholder="Password *"  required/>
                         </div><br/>
                         <div>
-                        <label> Confirm Password</label> &nbsp;
+                        <label> Confirm </label>
                             <input type="password" style={textStyle} 
                                 placeholder="Confirm Password *"  required/>
                         </div><br/>
                         <Link to="/dashboard">
-                            <button type="button" style={{padding:'10px 20px',backgroundColor: '#0000FF',
-                            color: 'white',cursor:'pointer',border:'none'}}>
+                            <button type="button" style={{padding:'10px 10px',backgroundColor: '#0000FF',
+                            color: 'white',cursor:'pointer',border:'none', marginBottom:'10px'}}>
                                 Register
                             </button>
-                        </Link>
+                        </Link><br></br>
             </form>
-            
+            </div> 
         </div>
         );
     }
