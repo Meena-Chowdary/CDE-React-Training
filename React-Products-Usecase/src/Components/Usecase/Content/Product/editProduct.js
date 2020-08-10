@@ -38,6 +38,30 @@ class EditProduct extends React.Component {
             this.setState({buttonStatus:true})
         }
     }
+    checkValidation = () => {
+        var splChars = "*|,\":<>[]{}`\';()@&$#%";
+        if (this.state.productName === '' || this.state.name.includes(splChars)) {
+            alert('Name field cannot be a blank or have special characters')
+            return false
+        }
+        if(this.state.productImage === ''){
+            alert('Please attach image')
+            return false
+        }
+        if (this.state.productPrice === 0) {
+            alert('Price field cannot be empty')
+            return false
+        }
+        if (this.state.categoryName === '') {
+            alert('Please choose respective Category')
+            return false
+        }
+        if (this.state.description === '') {
+            alert('Description field cannot be empty')
+            return false
+        }
+        return true
+    }
 
     componentWillMount() {
         if (this.props.location.state !== undefined) {
@@ -84,6 +108,7 @@ class EditProduct extends React.Component {
     }
 
     editProduct = () => {
+        if(this.checkValidation){
         let productRequestBody = {
             "productName": this.state.productName,
             "productPrice": this.state.productPrice,
@@ -98,6 +123,7 @@ class EditProduct extends React.Component {
                 console.error(error);
             })
     }
+}
     render() {
         const { errors } = this.state;
         const textStyle = {

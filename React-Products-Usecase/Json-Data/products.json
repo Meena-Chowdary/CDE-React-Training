@@ -2,7 +2,7 @@
   "products": [
     {
       "productName": "Samsung",
-      "productPrice": "25000",
+      "productPrice": "20000",
       "productImage": "mob2.jpg",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
@@ -73,11 +73,11 @@
       "id": 9
     }
   ],
-  "users" :[
+  "users": [
     {
-      "id":1,
+      "id": 1,
       "username": "meena@gmail.com",
-      "password":"123"
+      "password": "123"
     }
   ]
 }

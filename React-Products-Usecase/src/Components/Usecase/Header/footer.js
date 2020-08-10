@@ -12,12 +12,12 @@ class Footer extends React.Component {
             bottom: '0',
             left: '0',
             right: '0',
-            textAlign: 'center'
+            textAlign: 'center',
+            padding:'0.5px'
         }
         return (
             <footer style={footerStyle}>
-                <p>Copyright &copy;2020 <br/>Meena</p>
-            </footer>
+                <p>Copyright &copy;2020 <br></br>Meena</p>            </footer>
           );
     }
 }

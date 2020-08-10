@@ -25,7 +25,8 @@ class AddProduct extends React.Component {
             buttonStatus: true
         }
     }
-    handleSubmit = e => {
+
+     handleSubmit = e => {
         e.preventDefault()
         if(validateForm(this.state.errors)){
             this.setState({buttonStatus:false})
@@ -36,19 +37,23 @@ class AddProduct extends React.Component {
     checkValidation = () => {
         var splChars = "*|,\":<>[]{}`\';()@&$#%";
         if (this.state.name === '' || this.state.name.includes(splChars)) {
-            alert('name cannot be a blank or have special characters')
+            alert('Name field cannot be a blank or have special characters')
+            return false
+        }
+        if(this.state.image === ''){
+            alert('Please attach image')
             return false
         }
         if (this.state.price === 0) {
-            alert('price cannot be null')
+            alert('Price field cannot be empty')
             return false
         }
         if (this.state.category === '') {
-            alert('category cannot be  null')
+            alert('Please choose respective Category')
             return false
         }
         if (this.state.description === '') {
-            alert('quantity cannot be null')
+            alert('Description field cannot be empty')
             return false
         }
         return true
@@ -96,8 +101,8 @@ class AddProduct extends React.Component {
             }, error => {
                 console.error(error);
             })
-        }
     }
+}
     render() {
         const { errors } = this.state;
         const textStyle = {
@@ -108,7 +113,7 @@ class AddProduct extends React.Component {
         }
         return (
             <div>
-                <form name="form" onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
+                <form name="form"  onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Add Product</h3>
                     <div className="name">
                         <label htmlFor="name"> Product Name</label> &emsp;  &emsp;
@@ -138,9 +143,9 @@ class AddProduct extends React.Component {
                     <div>
                         <label> Product Category</label> &emsp; 
                             <select defaultValue={this.state.selectValue} id="category" style={textStyle}
-                            onChange={this.getCategory} required
+                            onChange={this.getCategory}
                         >
-                            <option value="select">--select--</option>
+                            <option value="">--select--</option>
                             <option value="Mobiles">Mobiles</option>
                             <option value="Laptops">Laptops</option>
                             <option value="Cameras">Cameras</option>

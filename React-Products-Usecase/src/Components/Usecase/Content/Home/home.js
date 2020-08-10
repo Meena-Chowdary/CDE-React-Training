@@ -8,7 +8,7 @@ class Home extends React.Component {
             <div>
                 <div style={{ float: 'left', margin: '80px', backgroundColor: '#A9A9A9' }}>
                     <Chart
-                        width={'600px'}
+                        width={'500px'}
                         height={'300px'}
                         chartType="PieChart"
                         loader={<div>Loading Chart</div>}
@@ -27,7 +27,7 @@ class Home extends React.Component {
                 </div>
                 <div style={{ float: 'right', marginRight: '80px', marginTop: '80px' }} >
                     <Chart
-                        width={'600px'}
+                        width={'500px'}
                         height={'300px'}
                         chartType="LineChart"
                         loader={<div>Loading Chart</div>}
