@@ -6,8 +6,7 @@ import Register from './Register/register';
 import Products from './Product/products';
 import EditProduct from './Product/editProduct';
 import AddProduct from './Product/addProduct';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Content extends React.Component {
     state = {}
@@ -21,6 +20,7 @@ class Content extends React.Component {
                     <Route path='/add' component={AddProduct}></Route>
                     <Route path='/register' component={Register}></Route>
                     <Route path='/edit' component={EditProduct}></Route>
+                
                 </Switch>
             </div>
         );

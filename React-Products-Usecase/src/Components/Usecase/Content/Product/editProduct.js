@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { Button } from "reactstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+const validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid=false));
+    return valid;
+}
 class EditProduct extends React.Component {
     constructor(props) {
         super(props)
@@ -14,7 +20,22 @@ class EditProduct extends React.Component {
             productImage: '',
             categoryName: '',
             description: '',
-            id: 0
+            id: 0,
+            errors: {
+                nameError: '',
+                priceError: '',
+                descError: '',
+            },
+            buttonStatus: true
+        }
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        if(validateForm(this.state.errors)){
+            this.setState({buttonStatus:false})
+        }else{
+            this.setState({buttonStatus:true})
         }
     }
 
@@ -38,10 +59,14 @@ class EditProduct extends React.Component {
     }
 
     getName = (event) => {
+        let errors=this.state.errors;
+        errors.nameError=""||(!event.target.value.match(/^([a-zA-Z0-9_-]+)$/))?"Product Name shouldn't be empty" : ""
         this.setState({ productName: event.target.value })
     }
 
     getPrice = (event) => {
+        let errors=this.state.errors;
+        errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
         this.setState({ productPrice: event.target.value })
     }
 
@@ -50,6 +75,8 @@ class EditProduct extends React.Component {
     }
 
     getDescription = (event) => {
+        let errors=this.state.errors;
+        errors.descriptionError = "" || event.target.value.trim().length === 0 ? " Product Description required !!" : ""
         this.setState({ description: event.target.value })
     }
     getImage = (event) => {
@@ -72,6 +99,7 @@ class EditProduct extends React.Component {
             })
     }
     render() {
+        const { errors } = this.state;
         const textStyle = {
             width: '40%',
             padding: '12px 20px',
@@ -85,29 +113,37 @@ class EditProduct extends React.Component {
         }
         return (
             <div>
-                <form style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
+                <form onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Edit Product</h3>
                     <div>
-                        <label> Id : </label> &nbsp;
+                        <label>Product Id  </label> &emsp;  &emsp; &emsp; &nbsp;
                             <input type="text" style={textStyle} value={this.state.id} readOnly />
                     </div><br />
                     <div>
-                        <label> Name</label> &nbsp;
+                        <label> Product Name</label> &emsp;  &emsp;
                             <input type="text" style={textStyle} id="productName" value={this.state.productName} onChange={this.getName} required
                         />
+                        <br></br>
+                            {errors.nameError.length > 0 && (
+                                <span className="error">{errors.nameError}</span>
+                              )}   
                     </div><br />
                     <div>
-                        <label> Image</label> &nbsp;
+                        <label> Product Image</label> 
                             <input type="file" style={textStyle} id="productImage" onChange={this.getImage} required
                         />
                     </div><br />
                     <div>
-                        <label> Price</label> &nbsp;
+                        <label> Product Price</label> &emsp;  &emsp; &nbsp;
                             <input type="text" style={textStyle} id="productPrice" value={this.state.productPrice} onChange={this.getPrice} required
                         />
+                        <br></br>
+                            {errors.priceError.length > 0 && (
+                                <span className="error">{errors.priceError}</span>
+                              )} 
                     </div><br />
                     <div>
-                        <label> Category</label> &nbsp;
+                        <label> Product Category</label> &emsp;  
 
                         <select id="categoryName" value={this.state.categoryName} style={textStyle}
                             onChange={this.getCategory}
@@ -119,12 +155,16 @@ class EditProduct extends React.Component {
                         </select>
                     </div><br />
                     <div>
-                        <label> Description</label> &nbsp;
+                        <label>Product Description</label> &ensp;
                             <input type="text" style={textStyle} id="decription" value={this.state.description} onChange={this.getDescription} required
                         />
+                        <br></br>
+                            {errors.descError.length > 0 && (
+                                <span className="error">{errors.descError}</span>
+                              )}  
                     </div><br />
                     <div>
-                        <Button color="secondary" onClick={this.editProduct}>Edit</Button>
+                        <Button color="secondary" disabled={this.state.buttonStatus} onClick={this.editProduct}>Edit</Button>
                     </div>
                     <br />
                     <Link to="/product">

@@ -2,13 +2,16 @@ import React from 'react';
 import ProductDetails from './productDetails';
 import axios from "axios";
 import { Container, Col, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class Products extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             products: [],
             productList: [],
+            categoryProducts:[],
             searchValue: '',
+            categoryValue:'',
             myid: 0
         }
     }
@@ -21,9 +24,25 @@ class Products extends React.Component {
         axios.get('http://localhost:3000/products')
             .then(response => {
                 this.setState({ products: response.data })
+                this.setState({categoryProducts:response.data})
             }, error => {
                 console.error(error);
             })
+    }
+    categoryFilter=(event)=>{
+        let categoryV=event.target.value
+        if(categoryV!==' ')
+        {
+        this.setState({categoryValue:categoryV})
+        let categoryP=this.state.categoryProducts.filter(f=>{
+            return f.categoryName.match(categoryV)
+        })
+    
+        this.setState({products:categoryP})
+        
+    }else{
+            this.getAllProducts()
+        }
     }
 
     search = (word) => {
@@ -118,15 +137,22 @@ class Products extends React.Component {
         const elementStyle = {
             autoFocus: 'true',
             padding: '10px',
-            width: '100%',
+            width: '75%',
             textAlign: 'center',
             marginBottom: '30px'
         }
 
         return (
-
             <div style={style}>
-                <input type="text" name="search" style={elementStyle} placeholder="Enter item to be search" onChange={this.search} />
+                <input type="text" name="search" style={elementStyle} placeholder="Enter item to be search" onChange={this.search} />&ensp;
+                <label>Category  </label> &ensp;
+                    <select id="category" name="Category :" 
+                    defaultValue={this.state.selectValue} style={{width:'15%'}} onChange={this.categoryFilter}>
+                            <option value="" selected={true}>Select</option>
+                            <option value="Mobiles">Mobiles</option>
+                            <option value="Laptops">Laptops</option>
+                            <option value="Cameras">Cameras</option>
+                    </select>
                 <Container fluid>
                     <Row>
                         {this.renderAllProducts()}

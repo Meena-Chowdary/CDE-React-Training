@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "productName": "Samsung Galaxy",
+      "productName": "Samsung",
       "productPrice": "25000",
       "productImage": "mob2.jpg",
       "categoryName": "Mobiles",
@@ -9,11 +9,11 @@
       "id": 1
     },
     {
-      "productName": "Asus",
+      "productName": "Asus ",
       "productPrice": "54000",
+      "productImage": "mob4.jpg",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
-      "productImage": "mob4.jpg",
       "id": 2
     },
     {
@@ -71,6 +71,13 @@
       "description": "Camera to use",
       "productImage": "nikon2.jpg",
       "id": 9
+    }
+  ],
+  "users" :[
+    {
+      "id":1,
+      "username": "meena@gmail.com",
+      "password":"123"
     }
   ]
 }

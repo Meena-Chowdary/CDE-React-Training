@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { Button } from "react-bootstrap";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const validateForm = errors => {
     let valid = true;
     Object.values(errors).forEach(val => val.length > 0 && (valid=false));
@@ -26,7 +26,7 @@ class AddProduct extends React.Component {
         }
     }
 
-    handleSubmit = e => {
+     handleSubmit = e => {
         e.preventDefault()
         if(validateForm(this.state.errors)){
             this.setState({buttonStatus:false})
@@ -90,7 +90,7 @@ class AddProduct extends React.Component {
                 <form name="form"  onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Add Product</h3>
                     <div className="name">
-                        <label htmlFor="name"> Name</label> &nbsp;
+                        <label htmlFor="name"> Product Name</label> &emsp;  &emsp;
                             <input type="text"  style={textStyle} id="name" onChange={this.getName}
                             placeholder="Product Name *" noValidate /> 
                             <br></br>
@@ -99,11 +99,11 @@ class AddProduct extends React.Component {
                               )}     
                     </div><br />
                     <div>
-                        <label>Product Image: </label> &nbsp;
+                        <label>Product Image: </label> 
                     <input type="file" style={textStyle} onChange={this.getImage} multiple accept='images/*' />
                     </div> <br></br>
                     <div className="price">
-                        <label htmlFor="price"> Price</label> &nbsp;
+                        <label htmlFor="price"> Product Price</label> &emsp;  &emsp;  &nbsp;
                             <input 
                             type="text" name="price" style={textStyle} id="price" onChange={this.getPrice} required
                             placeholder="Product Price *"
@@ -115,7 +115,7 @@ class AddProduct extends React.Component {
                                 
                     </div><br />
                     <div>
-                        <label> Category</label> &nbsp;
+                        <label> Product Category</label> &emsp; 
                             <select defaultValue={this.state.selectValue} id="category" style={textStyle}
                             onChange={this.getCategory}
                         >
@@ -126,7 +126,7 @@ class AddProduct extends React.Component {
                         </select>
                     </div><br />
                     <div className="description">
-                        <label htmlFor="description"> Description</label> &nbsp;
+                        <label htmlFor="description">Product Description</label> &nbsp;
                             <input 
                             type="text" name="description" style={textStyle} id="description" onChange={this.getDescription} required
                             placeholder="Product Description *"

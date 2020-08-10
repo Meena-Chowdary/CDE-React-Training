@@ -1,5 +1,6 @@
 import React from 'react';
 import { Chart } from "react-google-charts";
+import 'bootstrap/dist/css/bootstrap.min.css';
 class Home extends React.Component {
     state = {}
     render() {

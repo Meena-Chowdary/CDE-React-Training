@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Header extends React.Component {
     state = {}
@@ -13,7 +14,7 @@ class Header extends React.Component {
         const headerStyle = {
             backgroundColor: 'black',
             color: 'white',
-            padding: '10px'
+            padding: '15px'
         }
         return (
             <div style={headerStyle}>

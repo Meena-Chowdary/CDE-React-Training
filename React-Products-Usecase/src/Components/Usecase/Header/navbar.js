@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NavigationBar extends React.Component {
     state = {}
@@ -10,7 +11,7 @@ class NavigationBar extends React.Component {
         }
         const navStyle = {
             backgroundColor: '#F1F1F1',
-            padding: '2px'
+            padding: '10px'
         }
         const linkStyle = {
             textDecoration: 'none', color: 'black'
@@ -25,7 +26,7 @@ class NavigationBar extends React.Component {
                         <Link to='/dashboard' style={linkStyle}>DashBoard</Link>
                     </li>
                     <li style={menuitem}>
-                        <Link to='/product' style={linkStyle}>Category</Link>
+                        <Link to='/product' style={linkStyle}>Products</Link>
                     </li>
                     <li style={menuitem}>
                         <Link to='/add' style={linkStyle}>Add Product</Link>
