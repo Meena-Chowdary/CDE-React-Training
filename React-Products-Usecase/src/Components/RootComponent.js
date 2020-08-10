@@ -2,15 +2,17 @@ import React from "react"
 import Header from "./Usecase/Header/header"
 import Content from "./Usecase/Content/content"
 import NavigationBar from "./Usecase/Header/navbar"
+import Footer from "./Usecase/Header/footer"
 
-class RootComponent extends React.Component{
+class RootComponent extends React.Component {
 
-    render(){
+    render() {
         return (
             <div>
                 <Header></Header>
                 <NavigationBar></NavigationBar>
                 <Content></Content>
+                <Footer></Footer>
             </div>
         )
     }
@@ -18,7 +20,4 @@ class RootComponent extends React.Component{
 }
 
 
-export default RootComponent
-
-//<Header></Header>
-// <NavigationBar></NavigationBar>
+export default RootComponent;

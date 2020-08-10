@@ -1,57 +1,76 @@
 {
   "products": [
     {
-      "productName": "Samsung",
-      "productPrice": "125000",
+      "productName": "Samsung Galaxy",
+      "productPrice": "25000",
+      "productImage": "mob2.jpg",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
       "id": 1
     },
     {
-      "id": 2,
-      "productName": "HP",
-      "productPrice": 70000,
+      "productName": "Asus",
+      "productPrice": "54000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob4.jpg",
+      "id": 2
+    },
+    {
+      "productName": "One Plus",
+      "productPrice": "45000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob1.jpg",
+      "id": 3
+    },
+    {
+      "productName": "HP Laptop",
+      "productPrice": "75000",
+      "categoryName": "Laptops",
       "description": "Laptops to use",
-      "categoryName": "Laptop",
-      "stock": 200
+      "productImage": "lap1.jpg",
+      "id": 4
     },
     {
-      "id": 3,
-      "productName": "Nikon D3500 DX-Format DSLR ",
+      "productName": "Dell Inspiron",
+      "productPrice": "80000",
+      "categoryName": "Laptops",
+      "description": "Laptops to use",
+      "productImage": "lap2.jpg",
+      "id": 5
+    },
+    {
+      "productName": "ASUS Classic",
+      "productPrice": "133490",
+      "categoryName": "Laptops",
+      "description": "Laptop to use",
+      "productImage": "lap.jpg",
+      "id": 6
+    },
+    {
+      "productName": "Cannon EOS",
+      "productPrice": "15000",
+      "categoryName": "Cameras",
       "description": "Camera to use",
-      "productPrice": 40000,
-      "categoryName": "Camera",
-      "stock": 200
-    },
-    {
-      "id": 4,
-      "productName": "Phone",
-      "description": "Mobiles to use",
-      "productPrice": 10000,
-      "categoryName": "Mobiles",
-      "stock": 200
-    },
-    {
-      "id": 6,
-      "productName": "Nikon D3500 DX-Format DSLR ",
-      "description": "Camera to use",
-      "productPrice": 40000,
-      "categoryName": "Camera",
-      "stock": 200
-    },
-    {
-      "productName": "iPhone",
-      "productPrice": "125700",
-      "categoryName": "Mobiles",
-      "description": "Mobiles to use",
+      "productImage": "cannon.jpg",
       "id": 7
     },
     {
-      "productName": "Tablet",
-      "productPrice": "50000",
-      "categoryName": "Electronics",
-      "description": "Tablet to play",
+      "productName": "Sony Camera",
+      "productPrice": "15000",
+      "categoryName": "Cameras",
+      "description": "Cameras to use",
+      "productImage": "sony.jpg",
       "id": 8
+    },
+    {
+      "productName": "Nikon Camera",
+      "productPrice": "8000",
+      "categoryName": "Cameras",
+      "description": "Camera to use",
+      "productImage": "nikon2.jpg",
+      "id": 9
     }
   ]
 }

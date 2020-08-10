@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import { Button } from "react-bootstrap";
+
+const validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid=false));
+    return valid;
+}
 class AddProduct extends React.Component {
     constructor(props) {
         super(props)
@@ -9,15 +16,34 @@ class AddProduct extends React.Component {
             price: 0,
             category: '',
             description: '',
-            buttonStatus: false
+            image: '',
+            errors: {
+                nameError: '',
+                priceError: '',
+                descError: '',
+            },
+            buttonStatus: true
         }
     }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        if(validateForm(this.state.errors)){
+            this.setState({buttonStatus:false})
+        }else{
+            this.setState({buttonStatus:true})
+        }
+    }
+
     getName = (event) => {
+        let errors=this.state.errors;
+        errors.nameError=""||(!event.target.value.match(/^([a-zA-Z0-9_-]+)$/))?"Product Name shouldn't be empty" : ""
         this.setState({ name: event.target.value })
-        this.checkValid()
     }
 
     getPrice = (event) => {
+        let errors=this.state.errors;
+        errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
         this.setState({ price: event.target.value })
     }
 
@@ -26,7 +52,13 @@ class AddProduct extends React.Component {
     }
 
     getDescription = (event) => {
+        let errors=this.state.errors;
+        errors.descriptionError = "" || event.target.value.trim().length === 0 ? " Product Description required !!" : ""
         this.setState({ description: event.target.value })
+    }
+
+    getImage = (event) => {
+        this.setState({ image: event.target.value.substr(12) })
     }
 
     addProduct = () => {
@@ -34,7 +66,8 @@ class AddProduct extends React.Component {
             "productName": this.state.name,
             "productPrice": this.state.price,
             "categoryName": this.state.category,
-            "description": this.state.description
+            "description": this.state.description,
+            "productImage": this.state.image
         }
         axios.post('http://localhost:3000/products', productRequestBody)
             .then(response => {
@@ -45,6 +78,7 @@ class AddProduct extends React.Component {
             })
     }
     render() {
+        const { errors } = this.state;
         const textStyle = {
             width: '40%',
             padding: '12px 20px',
@@ -53,42 +87,63 @@ class AddProduct extends React.Component {
         }
         return (
             <div>
-                <form name="form" style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
+                <form name="form"  onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Add Product</h3>
-                    <div>
-                        <label> Name</label> &nbsp;
-                            <input type="text" style={textStyle} id="name" onChange={this.getName} required
-                            placeholder="Product Name *" />
+                    <div className="name">
+                        <label htmlFor="name"> Name</label> &nbsp;
+                            <input type="text"  style={textStyle} id="name" onChange={this.getName}
+                            placeholder="Product Name *" noValidate /> 
+                            <br></br>
+                            {errors.nameError.length > 0 && (
+                                <span className="error">{errors.nameError}</span>
+                              )}     
                     </div><br />
                     <div>
-                        <label> Price</label> &nbsp;
-                            <input type="text" style={textStyle} id="price" onChange={this.getPrice} required
+                        <label>Product Image: </label> &nbsp;
+                    <input type="file" style={textStyle} onChange={this.getImage} multiple accept='images/*' />
+                    </div> <br></br>
+                    <div className="price">
+                        <label htmlFor="price"> Price</label> &nbsp;
+                            <input 
+                            type="text" name="price" style={textStyle} id="price" onChange={this.getPrice} required
                             placeholder="Product Price *"
-                        />
+                            noValidate />
+                            <br></br>
+                            {errors.priceError.length > 0 && (
+                                <span className="error">{errors.priceError}</span>
+                              )}  
+                                
                     </div><br />
                     <div>
                         <label> Category</label> &nbsp;
-                            <input type="text" style={textStyle} id="category" onChange={this.getCategory} required
-                            placeholder="Product Category *"
-                        />
+                            <select defaultValue={this.state.selectValue} id="category" style={textStyle}
+                            onChange={this.getCategory}
+                        >
+                            <option value="select">--select--</option>
+                            <option value="Mobiles">Mobiles</option>
+                            <option value="Laptops">Laptops</option>
+                            <option value="Cameras">Cameras</option>
+                        </select>
                     </div><br />
-                    <div>
-                        <label> Description</label> &nbsp;
-                            <input type="text" style={textStyle} id="description" onChange={this.getDescription} required
+                    <div className="description">
+                        <label htmlFor="description"> Description</label> &nbsp;
+                            <input 
+                            type="text" name="description" style={textStyle} id="description" onChange={this.getDescription} required
                             placeholder="Product Description *"
-                        />
+                            noValidate /> 
+                            <br></br>
+                            {errors.descError.length > 0 && (
+                                <span className="error">{errors.descError}</span>
+                              )}  
                     </div><br />
                     <div>
-                        <button type="button" style={{
-                            padding: '10px 15px', backgroundColor: '#4CAF50',
-                            color: 'white', cursor: 'pointer', border: 'none'
-                        }} onClick={this.addProduct}>Add</button>
+                        <Button variant="primary" disabled={this.state.buttonStatus} onClick={this.addProduct}>Add</Button>
                     </div>
                     <br />
-                    <Link to="/products">
-                        <button type="button" disabled={this.state.buttonStatus} style={{ padding: '10px 15px', cursor: 'pointer' }}>
+                    <Link to="/product">
+                        <Button variant="danger" >
                             Cancel
-                            </button>
+                            </Button>
                     </Link>
                 </form>
 

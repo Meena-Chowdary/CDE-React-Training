@@ -10,29 +10,32 @@ class NavigationBar extends React.Component {
         }
         const navStyle = {
             backgroundColor: '#F1F1F1',
-            padding:'2px'
+            padding: '2px'
+        }
+        const linkStyle = {
+            textDecoration: 'none', color: 'black'
+        }
+        const loginStyle = {
+            textDecoration: 'none', float: 'right', marginRight: '30px', color: 'black'
         }
         return (
             <div style={navStyle}>
-            <ul style={{listStyleType:'none'}}>
+                <ul style={{ listStyleType: 'none' }}>
                     <li style={menuitem}>
-                         <Link to='/dashboard' style={{ textDecoration:'none'}}>DashBoard</Link>
+                        <Link to='/dashboard' style={linkStyle}>DashBoard</Link>
                     </li>
                     <li style={menuitem}>
-                         <Link to='/product' style={{ textDecoration:'none'}}>Category</Link>
+                        <Link to='/product' style={linkStyle}>Category</Link>
                     </li>
                     <li style={menuitem}>
-                        <Link to='/add' style={{ textDecoration:'none'}}>Add Product</Link>
-                    </li>
-                    <input type="text" style={{marginLeft:'780px'}}placeholder="Search.." />
-                    <li style={menuitem}>
-                        <Link to='/profile' style={{ textDecoration:'none'}}>Profile</Link>
+                        <Link to='/add' style={linkStyle}>Add Product</Link>
                     </li>
                     <li style={menuitem}>
-                        <Link to='/login' style={{ textDecoration:'none'}}>Login</Link>
+                        <Link to='/' style={loginStyle}>Login</Link>
                     </li>
-            </ul>
+                </ul>
             </div>
+
         );
     }
 }

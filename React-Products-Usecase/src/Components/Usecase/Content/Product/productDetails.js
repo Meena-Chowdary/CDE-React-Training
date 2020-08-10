@@ -1,4 +1,6 @@
 import React from 'react';
+import { Card, Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 class ProductDetails extends React.Component {
     constructor(props) {
         super(props)
@@ -15,24 +17,25 @@ class ProductDetails extends React.Component {
     }
 
     render() {
-        const tableStyle = {
-            padding: '15px 30px'
+        const butStyle = {
+            float:'right'
         }
         return (
-            <tr>
-                <td style={tableStyle}>{this.props.id} </td>
-                <td style={tableStyle}>{this.props.name} </td>
-                <td style={tableStyle}>{this.props.price}</td>
-                <td style={tableStyle}>{this.props.category}</td>
-                <td style={tableStyle}>{this.props.description}</td>
-                <td>
-                    <button onClick={this.editProductWithId}>Edit</button>
-                </td>
-                <td>
-                    <button onClick={this.deleteCurrentProduct}>Del</button>
-                </td>
-
-            </tr>
+            <div className="p-2">
+                <Card>
+                    <Card.Img src={"images/" + this.props.image} alt="Card image cap" />
+                    <Card.Body>
+                        <Card.Title><u>{this.props.name}</u></Card.Title>
+                        <Card.Subtitle>Description : {this.props.description}</Card.Subtitle>
+                        <Card.Text>
+                            Price : {this.props.price}<br></br>
+                                 Category : {this.props.category}<br></br>
+                        </Card.Text>
+                        <Button variant="primary" onClick={this.editProductWithId}>Edit</Button> &nbsp;
+                           <Button style ={butStyle} variant="danger" onClick={this.deleteCurrentProduct}>Delete</Button>
+                    </Card.Body>
+                </Card>
+            </div>
         )
     }
 }

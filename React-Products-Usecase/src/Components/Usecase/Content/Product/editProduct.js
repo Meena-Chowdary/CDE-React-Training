@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import { Button } from "reactstrap";
 class EditProduct extends React.Component {
     constructor(props) {
         super(props)
@@ -10,6 +11,7 @@ class EditProduct extends React.Component {
         this.state = {
             productName: '',
             productPrice: 0,
+            productImage: '',
             categoryName: '',
             description: '',
             id: 0
@@ -24,6 +26,7 @@ class EditProduct extends React.Component {
                     this.setState({
                         productName: response.data.productName,
                         productPrice: response.data.productPrice,
+                        productImage: response.data.productImage,
                         categoryName: response.data.categoryName,
                         description: response.data.description,
                         id: response.data.id
@@ -36,7 +39,6 @@ class EditProduct extends React.Component {
 
     getName = (event) => {
         this.setState({ productName: event.target.value })
-
     }
 
     getPrice = (event) => {
@@ -50,11 +52,15 @@ class EditProduct extends React.Component {
     getDescription = (event) => {
         this.setState({ description: event.target.value })
     }
+    getImage = (event) => {
+        this.setState({ productImage: event.target.value.substr(12) })
+    }
 
     editProduct = () => {
         let productRequestBody = {
             "productName": this.state.productName,
             "productPrice": this.state.productPrice,
+            "productImage": this.state.productImage,
             "categoryName": this.state.categoryName,
             "description": this.state.description
         }
@@ -81,7 +87,6 @@ class EditProduct extends React.Component {
             <div>
                 <form style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Edit Product</h3>
-                    <h1>Edit Product with id:{this.props.location.state.myId}</h1>
                     <div>
                         <label> Id : </label> &nbsp;
                             <input type="text" style={textStyle} value={this.state.id} readOnly />
@@ -92,14 +97,26 @@ class EditProduct extends React.Component {
                         />
                     </div><br />
                     <div>
+                        <label> Image</label> &nbsp;
+                            <input type="file" style={textStyle} id="productImage" onChange={this.getImage} required
+                        />
+                    </div><br />
+                    <div>
                         <label> Price</label> &nbsp;
                             <input type="text" style={textStyle} id="productPrice" value={this.state.productPrice} onChange={this.getPrice} required
                         />
                     </div><br />
                     <div>
                         <label> Category</label> &nbsp;
-                            <input type="text" style={textStyle} id="categoryName" value={this.state.categoryName} onChange={this.getCategory} required
-                        />
+
+                        <select id="categoryName" value={this.state.categoryName} style={textStyle}
+                            onChange={this.getCategory}
+                        >
+                            <option value="select">--select--</option>
+                            <option value="Mobiles">Mobiles</option>
+                            <option value="Laptops">Laptops</option>
+                            <option value="Cameras">Cameras</option>
+                        </select>
                     </div><br />
                     <div>
                         <label> Description</label> &nbsp;
@@ -107,16 +124,13 @@ class EditProduct extends React.Component {
                         />
                     </div><br />
                     <div>
-                        <button type="button" style={{
-                            padding: '10px 15px', backgroundColor: '#4CAF50',
-                            color: 'white', cursor: 'pointer', border: 'none'
-                        }} onClick={this.editProduct}>Edit</button>
+                        <Button color="secondary" onClick={this.editProduct}>Edit</Button>
                     </div>
                     <br />
                     <Link to="/product">
-                        <button type="button" style={{ padding: '10px 15px', cursor: 'pointer' }}>
+                        <Button color="danger">
                             Cancel
-                            </button>
+                            </Button>
                     </Link>
                 </form>
 
