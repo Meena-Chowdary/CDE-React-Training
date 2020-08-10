@@ -86,6 +86,7 @@ class Products extends React.Component {
                                 price={product.productPrice}
                                 category={product.categoryName}
                                 description={product.description}
+                                stock={product.stock}
                                 deleteId={this.deleteProductWithId}
                                 editId={this.editProductWithId}
                             >
@@ -106,6 +107,7 @@ class Products extends React.Component {
                             price={product.productPrice}
                             category={product.categoryName}
                             description={product.description}
+                            stock={product.stock}
                             deleteId={this.deleteProductWithId}
                             editId={this.editProductWithId}
                         >

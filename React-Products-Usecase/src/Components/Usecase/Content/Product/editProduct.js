@@ -20,11 +20,13 @@ class EditProduct extends React.Component {
             productImage: '',
             categoryName: '',
             description: '',
+            stock:'',
             id: 0,
             errors: {
                 nameError: '',
                 priceError: '',
                 descError: '',
+                stockError:''
             },
             buttonStatus: true
         }
@@ -56,6 +58,10 @@ class EditProduct extends React.Component {
             alert('Please choose respective Category')
             return false
         }
+        if (this.state.stock === '') {
+            alert('Stock cannot be empty')
+            return false
+        }
         if (this.state.description === '') {
             alert('Description field cannot be empty')
             return false
@@ -74,6 +80,7 @@ class EditProduct extends React.Component {
                         productImage: response.data.productImage,
                         categoryName: response.data.categoryName,
                         description: response.data.description,
+                        stock:response.data.stock,
                         id: response.data.id
                     })
                 }, error => {
@@ -92,6 +99,11 @@ class EditProduct extends React.Component {
         let errors=this.state.errors;
         errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
         this.setState({ productPrice: event.target.value })
+    }
+    getStock = (event) => {
+        let errors = this.state.errors
+        errors.stockError = (!event.target.value.match(/^[1-9]+[0-9]*$/)) ? "Invalid stock amount !!" : ""
+        this.setState({stock: event.target.value})
     }
 
     getCategory = (event) => {
@@ -114,7 +126,8 @@ class EditProduct extends React.Component {
             "productPrice": this.state.productPrice,
             "productImage": this.state.productImage,
             "categoryName": this.state.categoryName,
-            "description": this.state.description
+            "description": this.state.description,
+            "stock":this.state.stock
         }
         axios.put('http://localhost:3000/products/' + this.state.id, productRequestBody)
             .then(response => {
@@ -181,12 +194,21 @@ class EditProduct extends React.Component {
                         </select>
                     </div><br />
                     <div>
-                        <label>Product Description</label> &ensp;
+                        <label>Product Description</label> &nbsp;
                             <input type="text" style={textStyle} id="decription" value={this.state.description} onChange={this.getDescription} required
                         />
                         <br></br>
                             {errors.descError.length > 0 && (
                                 <span className="error">{errors.descError}</span>
+                              )}  
+                    </div><br />
+                    <div>
+                        <label>Product Stock</label> &emsp; &emsp; &nbsp;
+                            <input type="text" style={textStyle} id="decriptstockion" value={this.state.stock} onChange={this.getStock} required
+                        />
+                        <br></br>
+                            {errors.stockError.length > 0 && (
+                                <span className="error">{errors.stockError}</span>
                               )}  
                     </div><br />
                     <div>

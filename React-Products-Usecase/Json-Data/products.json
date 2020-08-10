@@ -1,75 +1,84 @@
 {
   "products": [
     {
-      "productName": "Samsung",
+      "productName": "Samsung-Galaxy",
       "productPrice": "20000",
-      "productImage": "mob2.jpg",
+      "productImage": "mob1.jpg",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
+      "stock": "15",
       "id": 1
     },
     {
-      "productName": "Asus ",
-      "productPrice": "54000",
-      "productImage": "mob4.jpg",
+      "productName": "ASUS",
+      "productPrice": "15000",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
+      "productImage": "mob2.jpg",
+      "stock": "10",
       "id": 2
     },
     {
-      "productName": "One Plus",
+      "productName": "One-Plus",
       "productPrice": "45000",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
-      "productImage": "mob1.jpg",
+      "productImage": "mob4.jpg",
+      "stock": "8",
       "id": 3
     },
     {
-      "productName": "HP Laptop",
+      "productName": "HP-Laptop",
       "productPrice": "75000",
       "categoryName": "Laptops",
       "description": "Laptops to use",
       "productImage": "lap1.jpg",
+      "stock": "6",
       "id": 4
     },
     {
-      "productName": "Dell Inspiron",
+      "productName": "Dell-Inspiron",
       "productPrice": "80000",
       "categoryName": "Laptops",
       "description": "Laptops to use",
       "productImage": "lap2.jpg",
+      "stock": "10",
       "id": 5
     },
     {
-      "productName": "ASUS Classic",
+      "productName": "ASUS-Classic",
       "productPrice": "133490",
       "categoryName": "Laptops",
-      "description": "Laptop to use",
+      "description": "Laptops to use",
       "productImage": "lap.jpg",
+      "stock": "7",
       "id": 6
     },
     {
-      "productName": "Cannon EOS",
-      "productPrice": "15000",
-      "categoryName": "Cameras",
-      "description": "Camera to use",
-      "productImage": "cannon.jpg",
-      "id": 7
-    },
-    {
-      "productName": "Sony Camera",
+      "productName": "Cannon-EOS",
       "productPrice": "15000",
       "categoryName": "Cameras",
       "description": "Cameras to use",
+      "productImage": "cannon.jpg",
+      "stock": "25",
+      "id": 7
+    },
+    {
+      "productName": "Sony-Camera",
+      "productPrice": "12000",
+      "categoryName": "Cameras",
+      "description": "Cameras to use",
       "productImage": "sony.jpg",
+      "stock": "12",
       "id": 8
     },
     {
-      "productName": "Nikon Camera",
+      "productName": "Nikon-Camera",
       "productPrice": "8000",
       "categoryName": "Cameras",
-      "description": "Camera to use",
+      "description": "Cameras to use",
       "productImage": "nikon2.jpg",
+      "stock": "6",
       "id": 9
     }
   ],

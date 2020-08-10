@@ -17,10 +17,12 @@ class AddProduct extends React.Component {
             category: '',
             description: '',
             image: '',
+            stock:'',
             errors: {
                 nameError: '',
                 priceError: '',
                 descError: '',
+                stockError:''
             },
             buttonStatus: true
         }
@@ -48,6 +50,10 @@ class AddProduct extends React.Component {
             alert('Price field cannot be empty')
             return false
         }
+        if(this.state.stock === ''){
+            alert('Stock field cannot be empty')
+            return false
+        }
         if (this.state.category === '') {
             alert('Please choose respective Category')
             return false
@@ -71,6 +77,12 @@ class AddProduct extends React.Component {
         this.setState({ price: event.target.value })
     }
 
+    getStock = (event) => {
+        let errors = this.state.errors
+        errors.stockError = (!event.target.value.match(/^[1-9]+[0-9]*$/)) ? "Invalid stock amount !!" : ""
+        this.setState({stock: event.target.value})
+    }
+
     getCategory = (event) => {
         this.setState({ category: event.target.value })
     }
@@ -92,7 +104,8 @@ class AddProduct extends React.Component {
             "productPrice": this.state.price,
             "categoryName": this.state.category,
             "description": this.state.description,
-            "productImage": this.state.image
+            "productImage": this.state.image,
+            "stock":this.state.stock
         }
         axios.post('http://localhost:3000/products', productRequestBody)
             .then(response => {
@@ -160,6 +173,17 @@ class AddProduct extends React.Component {
                             <br></br>
                             {errors.descError.length > 0 && (
                                 <span className="error">{errors.descError}</span>
+                              )}  
+                    </div><br />
+                    <div className="stock">
+                        <label htmlFor="stock">Product Stock</label> &emsp; &emsp; &nbsp;
+                            <input 
+                            type="text" name="stock" style={textStyle} id="stock" onChange={this.getStock} required
+                            placeholder="Product Stock *"
+                            noValidate /> 
+                            <br></br>
+                            {errors.stockError.length > 0 && (
+                                <span className="error">{errors.stockError}</span>
                               )}  
                     </div><br />
                     <div>

@@ -29,7 +29,8 @@ class ProductDetails extends React.Component {
                         <Card.Subtitle>Description : {this.props.description}</Card.Subtitle>
                         <Card.Text>
                             Price : {this.props.price}<br></br>
-                                 Category : {this.props.category}<br></br>
+                            Category : {this.props.category}<br></br>
+                            Stock : {this.props.stock}<br/>
                         </Card.Text>
                         <Button variant="primary" onClick={this.editProductWithId}>Edit</Button> &nbsp;
                            <Button style ={butStyle} variant="danger" onClick={this.deleteCurrentProduct}>Delete</Button>
