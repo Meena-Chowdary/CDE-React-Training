@@ -7,6 +7,8 @@ class Home extends React.Component {
         super(props)
         this.state={
             products:[],
+            priceData:[],
+            stockData:[],
             mobiles:0,
             laptops:0,
             cameras:0
@@ -23,6 +25,7 @@ class Home extends React.Component {
                     products: response.data,
                 })
                 this.data()
+                this.dataPrice(this.state.products)
             }, error => {
                 console.error(error)
             })
@@ -42,6 +45,13 @@ class Home extends React.Component {
             }
     })
 }
+    dataPrice = (products) => {
+        let price=[["Product","Price"]]
+            for(const data of products){
+                price.push([data.productName,parseInt(data.productPrice)])            
+            }
+        this.setState({priceData:price})
+    }
     render() {
         return (
             <div>
@@ -64,23 +74,19 @@ class Home extends React.Component {
                     }}
                 />
             </div>
-                <div style={{ float: 'right', marginRight: '80px', marginTop: '80px' }}>
+                <div style={{ float: 'right', marginRight: '120px', marginTop: '80px' }}>
                 <Chart
                     width='500px'
                     height='270px'
                     chartType="Bar"
                     loader={<span>Loading Chart...</span>}
-                    data={[
-                        ['Category', 'stock'],
-                        ['mobiles', this.state.mobiles],
-                        ['laptops', this.state.laptops],
-                        ['cameras', this.state.cameras]
-                    ]}
-                    options={{
-                        chart: {
-                            title: 'Stock Based on Category'
-                        },
-                    }}
+                            data={this.state.priceData}
+                            options={{
+                                title: 'Price Based on Product',
+                                colors: ['#e6693e'],
+                                backgroundColor: '#F1F1F1'
+    
+                            }}
                 />
             </div>
             </div>

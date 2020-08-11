@@ -3,63 +3,61 @@ import { Link } from 'react-router-dom';
 import './login.css';
 import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const validEmailRegex = RegExp(
-    /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-);
-const validateForm = errors => {
-    let valid = true;
-    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
-    return valid;
-};
+import axios from 'axios';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: null,
-            password: null,
-            errors: {
-                username: '',
-                password: '',
-            }
+            users:[],
+            username: '',
+            password: '',
+            wrongPassword: false,
+            wrongUser: false,
+            invalidUser:true,
+            invlaidPassword:true
         };
     }
-    handleChange = (event) => {
-        event.preventDefault();
-        const { id, value } = event.target;
-        let errors = this.state.errors;
+    login = () => {
+        axios.get('http://localhost:3000/users')
+            .then(response => {
+                this.setState({ users: response.data })
+                var loguser = this.state.users.find(user => user.username === this.state.username)
+                if (loguser === undefined) {
+                    this.setState({ wrongUser: true })
+                } else {
+                    if (loguser.password === this.state.password) {
+                        this.setState({ username: loguser.username })
+                        localStorage.loggedin = true
+                        localStorage.username = loguser.username
+                        console.log('Login Successful')
+                        this.props.history.push('/dashboard')
+                    } else {
+                        this.setState({ wrongPassword: true })
+                    }
+                }
+            }, error => { console.error(error); })
 
-        switch (id) {
-            case 'username':
-                errors.username =
-                    validEmailRegex.test(value)
-                        ? ''
-                        : 'Email is not valid!';
-                break;
-            case 'password':
-                errors.password =
-                    value.length < 8
-                        ? 'Password must be at least 8 characters long!'
-                        : '';
-                break;
-            default:
-                break;
-        }
-
-        this.setState({ errors, [id]: value });
     }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        if (validateForm(this.state.errors)) {
-            console.info('Valid Form')
-        } else {
-            console.error('Invalid Form')
+    getUser = (event) => {
+        this.setState({ wrongEmail: false })
+        if (event.target.value.includes('@')) {
+            this.setState({invalidUser : false})
+            this.setState({ username: event.target.value })
+        }else{
+            this.setState({invalidUser : true})
+        }
+    }
+    getPassword = (event) => {
+        this.setState({ wrongPassword: false })
+        if(event.target.value === ''){
+            this.setState({invalidPassword : true})
+        }else{
+            this.setState({invalidPassword:false})
+        this.setState({ password: event.target.value })
         }
     }
     render() {
-        const { errors } = this.state;
         const bodyStyle = {
             backgroundImage: `url("images/img1.jpg")`,
             backgroundRepeat: 'no-repeat',
@@ -79,24 +77,23 @@ class Login extends React.Component {
         return (
             <div style={bodyStyle}>
                 <div className="login">
-                    <form onChange={this.handleSubmit} noValidate>
+                    <form noValidate>
+                    {this.state.wrongUser && <h3 className='error'>Invalid UserName</h3>}
+                        {this.state.wrongPassword && <h3 className='error'>Invalid Password</h3>}
                         <label>User Name</label> &nbsp;
                         <input type="email" id="username" style={inputStyle}
-                            placeholder="User Name *" onChange={this.handleChange} required noValidate />
+                            placeholder="User Name *" onChange={this.getUser} required noValidate /><br/>
                         <br></br>
-                        {errors.username.length > 0 && <span className='error'>{errors.username}</span>}
                         <br />
                         <label>Password</label> &nbsp; &nbsp;
                         <input type="password" style={inputStyle} id="password"
-                            placeholder="Password *" onChange={this.handleChange} required noValidate />
+                            placeholder="Password *" onChange={this.getPassword} required noValidate />
                         <br /><br />
-                        {errors.password.length > 0 && <span className='error'>{errors.password}</span>}
+                        {this.state.invalidPassword && <span className='error'>Password is required</span>}
                         <br />
-                        <Link to="/dashboard">
-                            <Button color="primary">
+                            <Button color="primary" onClick={this.login} disabled={this.state.invalidUser || this.state.invalidPassword}>
                                 LogIn
                         </Button>
-                        </Link>
                         <br /><br />
                         <Link to="/register">
                             <Button color="link">

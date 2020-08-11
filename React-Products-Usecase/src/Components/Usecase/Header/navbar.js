@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NavigationBar extends React.Component {
-    state = {}
     render() {
         const menuitem = {
             display: 'inline',
@@ -19,6 +18,7 @@ class NavigationBar extends React.Component {
         const loginStyle = {
             textDecoration: 'none', float: 'right', marginRight: '30px', color: 'black'
         }
+
         return (
             <div style={navStyle}>
                 <ul style={{ listStyleType: 'none' }}>
@@ -32,10 +32,11 @@ class NavigationBar extends React.Component {
                         <Link to='/add' style={linkStyle}>Add Product</Link>
                     </li>
                     <li style={menuitem}>
-                        <Link to='/' style={loginStyle}>Login</Link>
-                    </li>
-                </ul>
-            </div>
+                        <Link to='/' style={loginStyle}> Login</Link>
+                    </li> 
+                    </ul>
+                </div> 
+                    
 
         );
     }

@@ -6,7 +6,7 @@
       "productImage": "mob1.jpg",
       "categoryName": "Mobiles",
       "description": "Mobiles to use",
-      "stock": "15",
+      "stock": "12",
       "id": 1
     },
     {
@@ -86,7 +86,20 @@
     {
       "id": 1,
       "username": "meena@gmail.com",
-      "password": "123"
+      "password": "123",
+      "confirmpassword": "123"
+    },
+    {
+      "username": "abc@gmail.com",
+      "password": "abc",
+      "confirmpassword": "abc",
+      "id": 2
+    },
+    {
+      "username": "cts@cognizant.com",
+      "password": "cts",
+      "confirmpassword": "cts",
+      "id": 3
     }
   ]
 }

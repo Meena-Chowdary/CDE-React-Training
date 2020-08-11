@@ -12,6 +12,7 @@ class Products extends React.Component {
             categoryProducts:[],
             searchValue: '',
             categoryValue:'',
+            sortedProducts:[],
             myid: 0
         }
     }
@@ -30,22 +31,22 @@ class Products extends React.Component {
             })
     }
     categoryFilter=(event)=>{
+        //this.setState({sortedProducts:this.state.categoryProducts.sort((a,b)=>{return a.stock-b.stock})})
         let categoryV=event.target.value
         if(categoryV!==' ')
         {
         this.setState({categoryValue:categoryV})
-        let categoryP=this.state.categoryProducts.filter(f=>{
+        let values=this.state.categoryProducts.filter(f=>{
             return f.categoryName.match(categoryV)
         })
-    
-        this.setState({products:categoryP})
+        this.setState({products:values})
         
     }else{
             this.getAllProducts()
         }
     }
-
-    search = (word) => {
+    search=(word)=>{
+        this.setState({sortedProducts:this.state.products.sort((a,b)=>{return a.stock-b.stock})})
         if (word.target.value === "") {
             this.getAllProducts()
         }
@@ -143,7 +144,6 @@ class Products extends React.Component {
             textAlign: 'center',
             marginBottom: '30px'
         }
-
         return (
             <div style={style}>
                 <input type="text" name="search" style={elementStyle} placeholder="Enter item to be search" onChange={this.search} />&ensp;

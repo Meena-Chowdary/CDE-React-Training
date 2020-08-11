@@ -25,6 +25,8 @@ class EditProduct extends React.Component {
             errors: {
                 nameError: '',
                 priceError: '',
+                imgError:'',
+                catError:'',
                 descError: '',
                 stockError:''
             },
@@ -41,29 +43,35 @@ class EditProduct extends React.Component {
         }
     }
     checkValidation = () => {
-        var splChars = "*|,\":<>[]{}`\';()@&$#%";
-        if (this.state.productName === '' || this.state.name.includes(splChars)) {
-            alert('Name field cannot be a blank or have special characters')
+        let errors=this.state.errors
+        if (this.state.name === '') {
+            this.setState({buttonStatus:true})
+            errors.nameError='Product Name must not be empty'
             return false
         }
-        if(this.state.productImage === ''){
-            alert('Please attach image')
+        if(this.state.image === ''){
+            this.setState({buttonStatus:true})
+            errors.imgError='Please attach image'
             return false
         }
-        if (this.state.productPrice === 0) {
-            alert('Price field cannot be empty')
+        if (this.state.price === 0) {
+            this.setState({buttonStatus:true})
+            errors.priceError='Price field cannot be empty'
             return false
         }
-        if (this.state.categoryName === '') {
-            alert('Please choose respective Category')
+        if(this.state.stock === ''){
+            this.setState({buttonStatus:true})
+            errors.stockError='Stock field cannot be empty'
             return false
         }
-        if (this.state.stock === '') {
-            alert('Stock cannot be empty')
+        if (this.state.category === '') {
+            this.setState({buttonStatus:true})
+            errors.catError='Please select respective category'
             return false
         }
         if (this.state.description === '') {
-            alert('Description field cannot be empty')
+            this.setState({buttonStatus:true})
+            errors.descError='Description field cannot be empty'
             return false
         }
         return true

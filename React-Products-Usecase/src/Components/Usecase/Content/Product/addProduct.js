@@ -21,6 +21,8 @@ class AddProduct extends React.Component {
             errors: {
                 nameError: '',
                 priceError: '',
+                imgError:'',
+                catError:'',
                 descError: '',
                 stockError:''
             },
@@ -37,29 +39,35 @@ class AddProduct extends React.Component {
         }
     }
     checkValidation = () => {
-        var splChars = "*|,\":<>[]{}`\';()@&$#%";
-        if (this.state.name === '' || this.state.name.includes(splChars)) {
-            alert('Name field cannot be a blank or have special characters')
+        let errors=this.state.errors
+        if (this.state.name === '') {
+            this.setState({buttonStatus:true})
+            errors.nameError='Product Name must not be empty'
             return false
         }
         if(this.state.image === ''){
-            alert('Please attach image')
+            this.setState({buttonStatus:true})
+            errors.imgError='Please attach image'
             return false
         }
         if (this.state.price === 0) {
-            alert('Price field cannot be empty')
+            this.setState({buttonStatus:true})
+            errors.priceError='Price field cannot be empty'
             return false
         }
         if(this.state.stock === ''){
-            alert('Stock field cannot be empty')
+            this.setState({buttonStatus:true})
+            errors.stockError='Stock field cannot be empty'
             return false
         }
         if (this.state.category === '') {
-            alert('Please choose respective Category')
+            this.setState({buttonStatus:true})
+            errors.catError='Please select respective category'
             return false
         }
         if (this.state.description === '') {
-            alert('Description field cannot be empty')
+            this.setState({buttonStatus:true})
+            errors.descError='Description field cannot be empty'
             return false
         }
         return true
@@ -67,13 +75,13 @@ class AddProduct extends React.Component {
 
     getName = (event) => {
         let errors=this.state.errors;
-        errors.nameError=""||(!event.target.value.match(/^([a-zA-Z0-9_-]+)$/))?"Product Name shouldn't be empty" : ""
+        errors.nameError=""||(!event.target.value.match(/^([a-zA-Z0-9_-]+)$/))?" Product Name shouldn't be empty" : ""
         this.setState({ name: event.target.value })
     }
 
     getPrice = (event) => {
-        let errors=this.state.errors;
-        errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
+         let errors=this.state.errors;
+         errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
         this.setState({ price: event.target.value })
     }
 
@@ -135,11 +143,15 @@ class AddProduct extends React.Component {
                             <br></br>
                             {errors.nameError.length > 0 && (
                                 <span className="error">{errors.nameError}</span>
-                              )}     
+                              )}       
                     </div><br />
                     <div>
                         <label>Product Image: </label> 
                     <input type="file" style={textStyle} onChange={this.getImage} multiple accept='images/*' />
+                    <br></br>
+                            {errors.imgError.length > 0 && (
+                                <span className="error">{errors.imgError}</span>
+                              )}  
                     </div> <br></br>
                     <div className="price">
                         <label htmlFor="price"> Product Price</label> &emsp;  &emsp;  &nbsp;
@@ -163,6 +175,10 @@ class AddProduct extends React.Component {
                             <option value="Laptops">Laptops</option>
                             <option value="Cameras">Cameras</option>
                         </select>
+                        <br></br>
+                            {errors.catError.length > 0 && (
+                                <span className="error">{errors.catError}</span>
+                              )}  
                     </div><br />
                     <div className="description">
                         <label htmlFor="description">Product Description</label> &nbsp;
