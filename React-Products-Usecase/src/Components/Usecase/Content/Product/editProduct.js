@@ -5,7 +5,7 @@ import { Button } from "reactstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 const validateForm = errors => {
     let valid = true;
-    Object.values(errors).forEach(val => val.length > 0 && (valid=false));
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
     return valid;
 }
 class EditProduct extends React.Component {
@@ -20,15 +20,15 @@ class EditProduct extends React.Component {
             productImage: '',
             categoryName: '',
             description: '',
-            stock:'',
+            stock: '',
             id: 0,
             errors: {
                 nameError: '',
                 priceError: '',
-                imgError:'',
-                catError:'',
+                imgError: '',
+                catError: '',
                 descError: '',
-                stockError:''
+                stockError: ''
             },
             buttonStatus: true
         }
@@ -36,42 +36,42 @@ class EditProduct extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        if(validateForm(this.state.errors)){
-            this.setState({buttonStatus:false})
-        }else{
-            this.setState({buttonStatus:true})
+        if (validateForm(this.state.errors)) {
+            this.setState({ buttonStatus: false })
+        } else {
+            this.setState({ buttonStatus: true })
         }
     }
     checkValidation = () => {
-        let errors=this.state.errors
+        let errors = this.state.errors
         if (this.state.name === '') {
-            this.setState({buttonStatus:true})
-            errors.nameError='Product Name must not be empty'
+            this.setState({ buttonStatus: true })
+            errors.nameError = 'Product Name must not be empty'
             return false
         }
-        if(this.state.image === ''){
-            this.setState({buttonStatus:true})
-            errors.imgError='Please attach image'
+        if (this.state.image === '') {
+            this.setState({ buttonStatus: true })
+            errors.imgError = 'Please attach image'
             return false
         }
         if (this.state.price === 0) {
-            this.setState({buttonStatus:true})
-            errors.priceError='Price field cannot be empty'
+            this.setState({ buttonStatus: true })
+            errors.priceError = 'Price field cannot be empty'
             return false
         }
-        if(this.state.stock === ''){
-            this.setState({buttonStatus:true})
-            errors.stockError='Stock field cannot be empty'
+        if (this.state.stock === '') {
+            this.setState({ buttonStatus: true })
+            errors.stockError = 'Stock field cannot be empty'
             return false
         }
         if (this.state.category === '') {
-            this.setState({buttonStatus:true})
-            errors.catError='Please select respective category'
+            this.setState({ buttonStatus: true })
+            errors.catError = 'Please select respective category'
             return false
         }
         if (this.state.description === '') {
-            this.setState({buttonStatus:true})
-            errors.descError='Description field cannot be empty'
+            this.setState({ buttonStatus: true })
+            errors.descError = 'Description field cannot be empty'
             return false
         }
         return true
@@ -88,7 +88,7 @@ class EditProduct extends React.Component {
                         productImage: response.data.productImage,
                         categoryName: response.data.categoryName,
                         description: response.data.description,
-                        stock:response.data.stock,
+                        stock: response.data.stock,
                         id: response.data.id
                     })
                 }, error => {
@@ -98,20 +98,20 @@ class EditProduct extends React.Component {
     }
 
     getName = (event) => {
-        let errors=this.state.errors;
-        errors.nameError=""||(!event.target.value.match(/^([a-zA-Z0-9_-]+)$/))?"Product Name shouldn't be empty" : ""
+        let errors = this.state.errors;
+        errors.nameError = "" || (!event.target.value.match(/^([a-zA-Z0-9_-]+)$/)) ? "Product Name shouldn't be empty" : ""
         this.setState({ productName: event.target.value })
     }
 
     getPrice = (event) => {
-        let errors=this.state.errors;
+        let errors = this.state.errors;
         errors.priceError = (!event.target.value.match(/^(?:0|[1-9]\d*)(?:\.(?!.*000)\d+)?$/)) ? "Price is invalid!!" : ""
         this.setState({ productPrice: event.target.value })
     }
     getStock = (event) => {
         let errors = this.state.errors
         errors.stockError = (!event.target.value.match(/^[1-9]+[0-9]*$/)) ? "Invalid stock amount !!" : ""
-        this.setState({stock: event.target.value})
+        this.setState({ stock: event.target.value })
     }
 
     getCategory = (event) => {
@@ -119,7 +119,7 @@ class EditProduct extends React.Component {
     }
 
     getDescription = (event) => {
-        let errors=this.state.errors;
+        let errors = this.state.errors;
         errors.descriptionError = "" || event.target.value.trim().length === 0 ? " Product Description required !!" : ""
         this.setState({ description: event.target.value })
     }
@@ -128,23 +128,23 @@ class EditProduct extends React.Component {
     }
 
     editProduct = () => {
-        if(this.checkValidation){
-        let productRequestBody = {
-            "productName": this.state.productName,
-            "productPrice": this.state.productPrice,
-            "productImage": this.state.productImage,
-            "categoryName": this.state.categoryName,
-            "description": this.state.description,
-            "stock":this.state.stock
+        if (this.checkValidation) {
+            let productRequestBody = {
+                "productName": this.state.productName,
+                "productPrice": this.state.productPrice,
+                "productImage": this.state.productImage,
+                "categoryName": this.state.categoryName,
+                "description": this.state.description,
+                "stock": this.state.stock
+            }
+            axios.put('http://localhost:3000/products/' + this.state.id, productRequestBody)
+                .then(response => {
+                    this.props.history.push('/product')
+                }, error => {
+                    console.error(error);
+                })
         }
-        axios.put('http://localhost:3000/products/' + this.state.id, productRequestBody)
-            .then(response => {
-                this.props.history.push('/product')
-            }, error => {
-                console.error(error);
-            })
     }
-}
     render() {
         const { errors } = this.state;
         const textStyle = {
@@ -171,13 +171,13 @@ class EditProduct extends React.Component {
                             <input type="text" style={textStyle} id="productName" value={this.state.productName} onChange={this.getName} required
                         />
                         <br></br>
-                            {errors.nameError.length > 0 && (
-                                <span className="error">{errors.nameError}</span>
-                              )}   
+                        {errors.nameError.length > 0 && (
+                            <span className="error">{errors.nameError}</span>
+                        )}
                     </div><br />
                     <div>
-                        <label> Product Image</label> 
-                            <input type="file" style={textStyle} id="productImage" onChange={this.getImage} required
+                        <label> Product Image</label>
+                        <input type="file" style={textStyle} id="productImage" onChange={this.getImage} required
                         />
                     </div><br />
                     <div>
@@ -185,12 +185,12 @@ class EditProduct extends React.Component {
                             <input type="text" style={textStyle} id="productPrice" value={this.state.productPrice} onChange={this.getPrice} required
                         />
                         <br></br>
-                            {errors.priceError.length > 0 && (
-                                <span className="error">{errors.priceError}</span>
-                              )} 
+                        {errors.priceError.length > 0 && (
+                            <span className="error">{errors.priceError}</span>
+                        )}
                     </div><br />
                     <div>
-                        <label> Product Category</label> &emsp;  
+                        <label> Product Category</label> &emsp;
 
                         <select id="categoryName" value={this.state.categoryName} style={textStyle}
                             onChange={this.getCategory}
@@ -206,28 +206,29 @@ class EditProduct extends React.Component {
                             <input type="text" style={textStyle} id="decription" value={this.state.description} onChange={this.getDescription} required
                         />
                         <br></br>
-                            {errors.descError.length > 0 && (
-                                <span className="error">{errors.descError}</span>
-                              )}  
+                        {errors.descError.length > 0 && (
+                            <span className="error">{errors.descError}</span>
+                        )}
                     </div><br />
                     <div>
                         <label>Product Stock</label> &emsp; &emsp; &nbsp;
                             <input type="text" style={textStyle} id="decriptstockion" value={this.state.stock} onChange={this.getStock} required
                         />
                         <br></br>
-                            {errors.stockError.length > 0 && (
-                                <span className="error">{errors.stockError}</span>
-                              )}  
+                        {errors.stockError.length > 0 && (
+                            <span className="error">{errors.stockError}</span>
+                        )}
                     </div><br />
                     <div>
-                        <Button color="secondary" disabled={this.state.buttonStatus} onClick={this.editProduct}>Edit</Button>
-                    </div>
-                    <br />
-                    <Link to="/product">
+                        <Button color="secondary" style={{float:'center'}} disabled={this.state.buttonStatus} onClick={this.editProduct}>Save</Button>
+                   
+                    <Link style={{float:'right'}}to="/product">
                         <Button color="danger">
                             Cancel
                             </Button>
                     </Link>
+                    </div>
+                    <br/>
                 </form>
 
             </div>

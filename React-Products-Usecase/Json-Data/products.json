@@ -30,9 +30,9 @@
     {
       "productName": "HP-Laptop",
       "productPrice": "75000",
+      "productImage": "lap1.jpg",
       "categoryName": "Laptops",
       "description": "Laptops to use",
-      "productImage": "lap1.jpg",
       "stock": "6",
       "id": 4
     },
@@ -55,15 +55,6 @@
       "id": 6
     },
     {
-      "productName": "Cannon-EOS",
-      "productPrice": "15000",
-      "categoryName": "Cameras",
-      "description": "Cameras to use",
-      "productImage": "cannon.jpg",
-      "stock": "25",
-      "id": 7
-    },
-    {
       "productName": "Sony-Camera",
       "productPrice": "12000",
       "categoryName": "Cameras",
@@ -73,13 +64,22 @@
       "id": 8
     },
     {
-      "productName": "Nikon-Camera",
-      "productPrice": "8000",
-      "categoryName": "Cameras",
-      "description": "Cameras to use",
-      "productImage": "nikon2.jpg",
+      "productName": "One-Plus",
+      "productPrice": "12000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob2.jpg",
       "stock": "6",
-      "id": 9
+      "id": 10
+    },
+    {
+      "productName": "Realme-c1",
+      "productPrice": "12000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob1.jpg",
+      "stock": "7",
+      "id": 11
     }
   ],
   "users": [
@@ -100,6 +100,24 @@
       "password": "cts",
       "confirmpassword": "cts",
       "id": 3
+    },
+    {
+      "username": "admin@gmail.com",
+      "password": "admin",
+      "confirmpassword": "admin",
+      "id": 4
+    },
+    {
+      "username": "react@gmail.com",
+      "password": "react",
+      "confirmpassword": "react",
+      "id": 5
+    },
+    {
+      "username": "user@gmail.com",
+      "password": "user",
+      "confirmpassword": "user",
+      "id": 6
     }
   ]
 }

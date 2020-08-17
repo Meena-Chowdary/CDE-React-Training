@@ -33,11 +33,9 @@ class NavigationBar extends React.Component {
                     </li>
                     <li style={menuitem}>
                         <Link to='/' style={loginStyle}> Login</Link>
-                    </li> 
-                    </ul>
-                </div> 
-                    
-
+                    </li>
+                </ul>
+            </div>
         );
     }
 }

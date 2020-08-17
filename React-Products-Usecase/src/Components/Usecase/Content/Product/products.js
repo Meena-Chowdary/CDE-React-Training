@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductDetails from './productDetails';
 import axios from "axios";
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row,Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 class Products extends React.Component {
     constructor(props) {
@@ -9,10 +9,10 @@ class Products extends React.Component {
         this.state = {
             products: [],
             productList: [],
-            categoryProducts:[],
+            categoryProducts: [],
             searchValue: '',
-            categoryValue:'',
-            sortedProducts:[],
+            categoryValue: '',
+            sortedProducts: [],
             myid: 0
         }
     }
@@ -25,28 +25,27 @@ class Products extends React.Component {
         axios.get('http://localhost:3000/products')
             .then(response => {
                 this.setState({ products: response.data })
-                this.setState({categoryProducts:response.data})
+                this.setState({ categoryProducts: response.data })
             }, error => {
                 console.error(error);
             })
     }
-    categoryFilter=(event)=>{
+    categoryFilter = (event) => {
         //this.setState({sortedProducts:this.state.categoryProducts.sort((a,b)=>{return a.stock-b.stock})})
-        let categoryV=event.target.value
-        if(categoryV!==' ')
-        {
-        this.setState({categoryValue:categoryV})
-        let values=this.state.categoryProducts.filter(f=>{
-            return f.categoryName.match(categoryV)
-        })
-        this.setState({products:values})
-        
-    }else{
+        let categoryV = event.target.value
+        if (categoryV !== ' ') {
+            this.setState({ categoryValue: categoryV })
+            let values = this.state.categoryProducts.filter(f => {
+                return f.categoryName.match(categoryV)
+            })
+            this.setState({ products: values })
+
+        } else {
             this.getAllProducts()
         }
     }
-    search=(word)=>{
-        this.setState({sortedProducts:this.state.products.sort((a,b)=>{return a.stock-b.stock})})
+    search = (word) => {
+        this.setState({ sortedProducts: this.state.products.sort((a, b) => { return a.stock - b.stock }) })
         if (word.target.value === "") {
             this.getAllProducts()
         }
@@ -73,8 +72,8 @@ class Products extends React.Component {
     renderAllProducts = () => {
         if (this.state.searchValue !== "") {
             if (this.state.productList.length === 0) {
-                return (
-                    <h5>"Sorry ! No Such Product Found !"</h5>)
+                return (<Alert variant='danger'>
+                    <h5>"Sorry ! No Such Product Found !"</h5></Alert>)
             }
             else {
                 return this.state.productList.map(product => {
@@ -148,13 +147,13 @@ class Products extends React.Component {
             <div style={style}>
                 <input type="text" name="search" style={elementStyle} placeholder="Enter item to be search" onChange={this.search} />&ensp;
                 <label>Category  </label> &ensp;
-                    <select id="category" name="Category :" 
-                    defaultValue={this.state.selectValue} style={{width:'15%'}} onChange={this.categoryFilter}>
-                            <option value="" selected={true}>Select</option>
-                            <option value="Mobiles">Mobiles</option>
-                            <option value="Laptops">Laptops</option>
-                            <option value="Cameras">Cameras</option>
-                    </select>
+                <select id="category" name="Category :"
+                    defaultValue={this.state.selectValue} style={{ width: '15%' }} onChange={this.categoryFilter}>
+                    <option value="" selected={true}>Select</option>
+                    <option value="Mobiles">Mobiles</option>
+                    <option value="Laptops">Laptops</option>
+                    <option value="Cameras">Cameras</option>
+                </select>
                 <Container fluid>
                     <Row>
                         {this.renderAllProducts()}

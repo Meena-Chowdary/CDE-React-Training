@@ -18,7 +18,7 @@ class ProductDetails extends React.Component {
 
     render() {
         const butStyle = {
-            float:'right'
+            float: 'right'
         }
         return (
             <div className="p-2">
@@ -30,10 +30,10 @@ class ProductDetails extends React.Component {
                         <Card.Text>
                             Price : {this.props.price}<br></br>
                             Category : {this.props.category}<br></br>
-                            Stock : {this.props.stock}<br/>
+                            Stock : {this.props.stock}<br />
                         </Card.Text>
                         <Button variant="primary" onClick={this.editProductWithId}>Edit</Button> &nbsp;
-                           <Button style ={butStyle} variant="danger" onClick={this.deleteCurrentProduct}>Delete</Button>
+                           <Button style={butStyle} variant="danger" onClick={this.deleteCurrentProduct}>Delete</Button>
                     </Card.Body>
                 </Card>
             </div>

@@ -28,9 +28,6 @@ class Login extends React.Component {
                 } else {
                     if (loguser.password === this.state.password) {
                         this.setState({ username: loguser.username })
-                        localStorage.loggedin = true
-                        localStorage.username = loguser.username
-                        console.log('Login Successful')
                         this.props.history.push('/dashboard')
                     } else {
                         this.setState({ wrongPassword: true })
@@ -83,7 +80,6 @@ class Login extends React.Component {
                         <label>User Name</label> &nbsp;
                         <input type="email" id="username" style={inputStyle}
                             placeholder="User Name *" onChange={this.getUser} required noValidate /><br/>
-                        <br></br>
                         <br />
                         <label>Password</label> &nbsp; &nbsp;
                         <input type="password" style={inputStyle} id="password"
