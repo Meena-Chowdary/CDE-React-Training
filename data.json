@@ -12,7 +12,7 @@
     },
     {
       "name": "ASUS",
-      "prrice": 15000,
+      "price": 15000,
       "category": "Mobiles",
       "description": "Mobiles to use",
       "image": "mob2.jpg",
@@ -32,7 +32,7 @@
     },
     {
       "name": "HP-Laptop",
-      "prrice": 75000,
+      "price": 75000,
       "image": "lap1.jpg",
       "category": "Laptops",
       "description": "Laptops to use",
@@ -43,9 +43,9 @@
     {
       "name": "Dell-Inspiron",
       "price": 80000,
-      "categoryName": "Laptops",
+      "category": "Laptops",
       "description": "Laptops to use",
-      "productImage": "lap2.jpg",
+      "image": "lap2.jpg",
       "stock": "No",
       "quantity": 0,
       "id": 5
