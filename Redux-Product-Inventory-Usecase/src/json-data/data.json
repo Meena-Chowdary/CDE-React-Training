@@ -1,0 +1,93 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Samsung-Galaxy-Pro",
+      "image": "mob1.jpg",
+      "category": "Mobiles",
+      "price": "22000",
+      "quantity": "12",
+      "stock": "Yes"
+    },
+    {
+      "id": 10,
+      "name": "One-Plus",
+      "image": "mob2.jpg",
+      "category": "Mobiles",
+      "price": "12000",
+      "quantity": "6",
+      "stock": "Yes"
+    },
+    {
+      "name": "Realme",
+      "image": "mob1.jpg",
+      "price": "25000",
+      "category": "Mobiles",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "name": "HP-Pavilion",
+      "image": "lap2.jpg",
+      "category": "Laptops",
+      "price": "125000",
+      "quantity": "1",
+      "stock": "Yes"
+    },
+    {
+      "name": "Cannon",
+      "image": "cannon.jpg",
+      "price": "9000",
+      "category": "Cameras",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 13
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "meena@gmail.com",
+      "password": "123",
+      "confirmpassword": "123"
+    },
+    {
+      "username": "abc@gmail.com",
+      "password": "abc",
+      "confirmpassword": "abc",
+      "id": 2
+    },
+    {
+      "username": "cts@cognizant.com",
+      "password": "cts",
+      "confirmpassword": "cts",
+      "id": 3
+    },
+    {
+      "username": "admin@gmail.com",
+      "password": "admin",
+      "confirmpassword": "admin",
+      "id": 4
+    },
+    {
+      "username": "react@gmail.com",
+      "password": "react",
+      "confirmpassword": "react",
+      "id": 5
+    },
+    {
+      "username": "user@gmail.com",
+      "password": "user",
+      "confirmpassword": "user",
+      "id": 6
+    },
+    {
+      "username": "redux@gmail.com",
+      "password": "redux",
+      "confirmpassword": "redux",
+      "id": 7
+    }
+  ]
+}
