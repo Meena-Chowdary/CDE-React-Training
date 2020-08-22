@@ -1,0 +1,123 @@
+{
+  "products": [
+    {
+      "productName": "Samsung-Galaxy",
+      "productPrice": "20000",
+      "productImage": "mob1.jpg",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "stock": "12",
+      "id": 1
+    },
+    {
+      "productName": "ASUS",
+      "productPrice": "15000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob2.jpg",
+      "stock": "10",
+      "id": 2
+    },
+    {
+      "productName": "One-Plus",
+      "productPrice": "45000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob4.jpg",
+      "stock": "8",
+      "id": 3
+    },
+    {
+      "productName": "HP-Laptop",
+      "productPrice": "75000",
+      "productImage": "lap1.jpg",
+      "categoryName": "Laptops",
+      "description": "Laptops to use",
+      "stock": "6",
+      "id": 4
+    },
+    {
+      "productName": "Dell-Inspiron",
+      "productPrice": "80000",
+      "categoryName": "Laptops",
+      "description": "Laptops to use",
+      "productImage": "lap2.jpg",
+      "stock": "10",
+      "id": 5
+    },
+    {
+      "productName": "ASUS-Classic",
+      "productPrice": "133490",
+      "categoryName": "Laptops",
+      "description": "Laptops to use",
+      "productImage": "lap.jpg",
+      "stock": "7",
+      "id": 6
+    },
+    {
+      "productName": "Sony-Camera",
+      "productPrice": "12000",
+      "categoryName": "Cameras",
+      "description": "Cameras to use",
+      "productImage": "sony.jpg",
+      "stock": "12",
+      "id": 8
+    },
+    {
+      "productName": "One-Plus",
+      "productPrice": "12000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob2.jpg",
+      "stock": "6",
+      "id": 10
+    },
+    {
+      "productName": "Realme-c1",
+      "productPrice": "12000",
+      "categoryName": "Mobiles",
+      "description": "Mobiles to use",
+      "productImage": "mob1.jpg",
+      "stock": "7",
+      "id": 11
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "meena@gmail.com",
+      "password": "123",
+      "confirmpassword": "123"
+    },
+    {
+      "username": "abc@gmail.com",
+      "password": "abc",
+      "confirmpassword": "abc",
+      "id": 2
+    },
+    {
+      "username": "cts@cognizant.com",
+      "password": "cts",
+      "confirmpassword": "cts",
+      "id": 3
+    },
+    {
+      "username": "admin@gmail.com",
+      "password": "admin",
+      "confirmpassword": "admin",
+      "id": 4
+    },
+    {
+      "username": "react@gmail.com",
+      "password": "react",
+      "confirmpassword": "react",
+      "id": 5
+    },
+    {
+      "username": "user@gmail.com",
+      "password": "user",
+      "confirmpassword": "user",
+      "id": 6
+    }
+  ]
+}
