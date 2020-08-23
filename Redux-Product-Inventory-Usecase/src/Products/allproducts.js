@@ -74,6 +74,7 @@ class AllProducts extends React.Component {
                         </Link> &nbsp;
                            <Button variant="danger" onClick={() => this.deleteProduct(product)}>Delete</Button>
                         <br />
+                        <br/>
                     </Card.Body>
                 </Card>
                     )
