@@ -24,13 +24,6 @@ class EditProduct extends React.Component {
             price: this.props.product.price,
             quantity: this.props.product.quantity,
             stock: this.props.product.stock,
-            // id:0,
-            // name:'',
-            // image:'',
-            // category:'',
-            // price:0,
-            // quantity:'',
-            // stock:0,
             errors: {
                 nameError: '',
                 priceError: '',
@@ -44,26 +37,6 @@ class EditProduct extends React.Component {
         }
 
     }
-    // componentWillMount() {
-    //         axios.get('http://localhost:3000/products/' + this.props.location.state.id)
-    //             .then(response => {
-    //                 this.setState({
-    //                     id: response.data.id,
-    //                     image: response.data.image,
-    //                     name: response.data.name,
-    //                     price: response.data.price,
-    //                     category: response.data.category,
-    //                     stock: parseInt(response.data.stock),
-    //                     quantity:parseInt(response.data.quantity)
-    //                 })
-    //                 this.checkValidation()
-    //                 console.log(this.state)
-    //                 console.log(this.state.image.substr(8))
-    //             }, error => {
-    //                 console.error(error)
-    //             })
-
-    // }
     handleSubmit = e => {
         e.preventDefault()
         if (validateForm(this.state.errors)) {
