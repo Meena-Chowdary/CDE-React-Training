@@ -4,9 +4,8 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 import { globalstyles } from '../globalstyles/globalstyles';
 
-export default function AddProduct(props) {
+export default function AddProduct({navigation}) {
 
-  console.log(props)
   const [name, setName] = useState('');
   const [image,setImage] = useState('')
   const [price, setPrice] = useState('');
@@ -16,20 +15,19 @@ export default function AddProduct(props) {
 
   const addProduct = () => {
     var newProduct = {
-      name,
-      image,
-      price,
-      category,
-      quantity,
-      stock
+      "name":name,
+      "image":image,
+      "price":price,
+      "category":category,
+      "stock":stock,
+      "quantity":quantity
     }
     
     //axios.post('https://my-json-server.typicode.com/Meena-Chowdary/CDE-React-Training/products', newProduct)
     axios.post('http://localhost:3000/products',newProduct)
       .then(response => {
-          props.route.params.addProducts(newProduct);
-          alert('Product Added')
-          props.navigation.pop()
+           alert('Product Added')
+          navigation.push('Home')
       }).catch(err => {
         console.log(err)
         alert('Try again later')

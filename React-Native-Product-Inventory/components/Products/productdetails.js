@@ -39,21 +39,21 @@ export default function ProductDetails({navigation, route}){
         <Image
         source={{uri : image}}
         style={globalstyles.images}/>
+        <Text> </Text>
         <Text>Product Name: {name}</Text>
         <Text>Product Price: {price}</Text>
         <Text>Product Category: {category}</Text>
         <Text>Stock Availability: {stock}</Text>
         <Text>Product Quantity: {quantity}</Text>
-        <Text></Text>
+        <Text> </Text>
         <Button
                     title="Update" style={globalstyles.addBtnStyle}
                     onPress={()=>navigation.navigate("Update",{items:product})}
                 ></Button>
-                <Text></Text>
-                <Text></Text>
+                <Text> </Text>
         <Button
                     title="Delete" style={globalstyles.addBtnStyle}
-                    onPress={()=>deleteProduct}
+                    onPress={deleteProduct}
                 ></Button>
         </Card>
     </View>

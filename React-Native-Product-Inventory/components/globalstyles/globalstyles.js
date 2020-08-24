@@ -8,13 +8,8 @@ export const globalstyles = StyleSheet.create({
     },
     containerStyle:{
         padding: 20,
-        flex:1
-    },
-    touchButtonContainer:{
-        backgroundColor: 'pink',
-        padding:10,
-        margin:20,
-        borderRadius:5
+        flex:1,
+        justifyContent:'center'
     },
     images:{
         width:200,
@@ -23,10 +18,10 @@ export const globalstyles = StyleSheet.create({
         justifyContent:'center',
         paddingTop:16,
         marginTop:16,
-        borderTopWidth:1
+        borderTopWidth:1,
+        alignSelf:'center'
     },
     addBtnStyle: {
-        color: '#007bff',
         backgroundColor: 'transparent',
         borderColor: '#007bff',
         borderStyle: 'solid',
@@ -34,11 +29,6 @@ export const globalstyles = StyleSheet.create({
         borderRadius: 1,
         margin: 5,
         padding: 10,
-        fontWeight: "bold",
-        textAlign: "center"
-    },
-    headerStyle: {
-        fontSize: 20,
         fontWeight: "bold",
         textAlign: "center"
     },

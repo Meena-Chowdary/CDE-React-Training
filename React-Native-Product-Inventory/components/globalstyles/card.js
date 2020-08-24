@@ -22,9 +22,12 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     marginHorizontal: 4,
     marginVertical: 6,
+    justifyContent:'center',
+    alignItems:'center',
+    width:'100%'
   },
   cardContent: {
     marginHorizontal: 18,
-    marginVertical: 20,
+    marginVertical: 20
   }
 });
