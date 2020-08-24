@@ -18,6 +18,7 @@ class AddProduct extends React.Component {
         this.state = {
             name: '',
             category: '',
+            vendor:'',
             price: 0,
             quantity: 0,
             stock: '',
@@ -26,6 +27,7 @@ class AddProduct extends React.Component {
                 nameError: '',
                 priceError: '',
                 qtyError: '',
+                vendorError:'',
                 catError: '',
                 imgError: '',
                 stockError: ''
@@ -64,6 +66,11 @@ class AddProduct extends React.Component {
             errors.catError = 'Please select respective category'
             return false
         }
+        if (this.state.vendor === '') {
+            this.setState({ buttonStatus: true })
+            errors.vendorError = 'Please enter Brand Name'
+            return false
+        }
         if (this.state.quantity === 0) {
             this.setState({ buttonStatus: true })
             errors.qtyError = 'Please enter quantity'
@@ -99,7 +106,11 @@ class AddProduct extends React.Component {
     getCategory = (event) => {
         this.setState({ category: event.target.value })
     }
-
+    getVendor = (event) => {
+        let errors = this.state.errors;
+        errors.vendorError = "" || (!event.target.value.match(/^([a-zA-Z0-9_-]+)$/)) ? "Vendor Name shouldn't be empty" : ""
+        this.setState({ vendor: event.target.value })
+    }
     getStock = (event) => {
         this.setState({ stock: event.target.value })
     }
@@ -122,6 +133,7 @@ class AddProduct extends React.Component {
                 image: this.state.image,
                 price: this.state.price,
                 category: this.state.category,
+                vendor:this.state.vendor,
                 quantity: this.state.quantity,
                 stock: this.state.stock
             }
@@ -191,6 +203,15 @@ class AddProduct extends React.Component {
                         <br></br>
                         {errors.catError.length > 0 && (
                             <span style={errorStyle} className="error">{errors.catError}</span>
+                        )}
+                    </div><br />
+                    <div className="brand">
+                        <label htmlFor="name"> Vendor Details</label> &emsp; &emsp; &emsp; &nbsp;
+                            <input type="text" style={textStyle} id="vendor" onChange={this.getVendor}
+                            placeholder="Vendor Details *" noValidate />
+                        <br></br>
+                        {errors.vendorError.length > 0 && (
+                            <span style={errorStyle} className="error">{errors.vendorError}</span>
                         )}
                     </div><br />
                     <div className="quantity">

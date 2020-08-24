@@ -20,14 +20,23 @@ class EditProduct extends React.Component {
             name: this.props.product.name,
             image: this.props.product.image,
             category: this.props.product.category,
+            vendor: this.props.product.vendor,
             price: this.props.product.price,
             quantity: this.props.product.quantity,
             stock: this.props.product.stock,
+            // id:0,
+            // name:'',
+            // image:'',
+            // category:'',
+            // price:0,
+            // quantity:'',
+            // stock:0,
             errors: {
                 nameError: '',
                 priceError: '',
                 qtyError: '',
                 catError: '',
+                vendorError:'',
                 imgError: '',
                 stockError: ''
             },
@@ -35,7 +44,26 @@ class EditProduct extends React.Component {
         }
 
     }
+    // componentWillMount() {
+    //         axios.get('http://localhost:3000/products/' + this.props.location.state.id)
+    //             .then(response => {
+    //                 this.setState({
+    //                     id: response.data.id,
+    //                     image: response.data.image,
+    //                     name: response.data.name,
+    //                     price: response.data.price,
+    //                     category: response.data.category,
+    //                     stock: parseInt(response.data.stock),
+    //                     quantity:parseInt(response.data.quantity)
+    //                 })
+    //                 this.checkValidation()
+    //                 console.log(this.state)
+    //                 console.log(this.state.image.substr(8))
+    //             }, error => {
+    //                 console.error(error)
+    //             })
 
+    // }
     handleSubmit = e => {
         e.preventDefault()
         if (validateForm(this.state.errors)) {
@@ -69,6 +97,11 @@ class EditProduct extends React.Component {
             errors.catError = 'Please select respective category'
             return false
         }
+        if (this.state.vendor === '') {
+            this.setState({ buttonStatus: true })
+            errors.vendorError = 'Vendor Name must not be empty'
+            return false
+        }
         if (this.state.quantity === 0) {
             this.setState({ buttonStatus: true })
             errors.qtyError = 'Please enter quantity'
@@ -92,6 +125,12 @@ class EditProduct extends React.Component {
         let errors = this.state.errors;
         errors.nameError = "" || (!event.target.value.match(/^([a-zA-Z0-9_-]+)$/)) ? " Product Name shouldn't be empty" : ""
         this.setState({ name: event.target.value })
+    }
+
+    getVendor = (event) => {
+        let errors = this.state.errors;
+        errors.vendorError = "" || (!event.target.value.match(/^([a-zA-Z0-9_-]+)$/)) ? "Vendor Name shouldn't be empty" : ""
+        this.setState({ vendor: event.target.value })
     }
 
     getPrice = (event) => {
@@ -132,6 +171,7 @@ class EditProduct extends React.Component {
                 name: this.state.name,
                 image: this.state.image,
                 category: this.state.category,
+                vendor:this.state.vendor,
                 price: this.state.price,
                 quantity: this.state.quantity,
                 stock: this.state.stock
@@ -203,6 +243,15 @@ class EditProduct extends React.Component {
                         <br></br>
                         {errors.catError.length > 0 && (
                             <span style={errorStyle} className="error">{errors.catError}</span>
+                        )}
+                    </div><br />
+                    <div className="vendor">
+                        <label htmlFor="vendor"> Vendor Details</label> &emsp; &emsp; &emsp; &nbsp;
+                            <input type="text" style={textStyle} id="vendor" value={this.state.vendor} onChange={this.getVendor}
+                            placeholder="Vendor Name *" noValidate />
+                        <br></br>
+                        {errors.vendorError.length > 0 && (
+                            <span style={errorStyle} className="error">{errors.vendorError}</span>
                         )}
                     </div><br />
                     <div className="quantity">

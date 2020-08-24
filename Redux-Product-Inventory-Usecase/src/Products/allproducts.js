@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from "axios"
 import allproducts from '../actions/allproduct';
-import { Card, Button, Alert } from 'react-bootstrap';
+import { Card, Button, Alert, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import deleteProductBroadcast from '../actions/deleteproduct';
+
 import productClickedBroadcast from '../actions/productclicked';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './product.css'
@@ -14,7 +14,8 @@ class AllProducts extends React.Component {
         super(props)
         this.state = {
             searchValue: "",
-            filteredProducts: []
+            filteredProducts: [],
+            sortedProducts:[]
         }
     }
     componentWillMount() {
@@ -27,6 +28,7 @@ class AllProducts extends React.Component {
     }
 
     searchProduct = (event) => {
+        this.setState({ sortedProducts: this.props.products.sort((a, b) => { return a.price - b.price }) })
         let value = event.target.value
         if (value === "") {
             this.allProducts()
@@ -35,7 +37,9 @@ class AllProducts extends React.Component {
         console.log(value)
         let searchFilter = []
         searchFilter = this.props.products.filter(w => {
-            return (w.name.toLowerCase().startsWith(value.trim().toLowerCase())) || (w.category.toLowerCase().startsWith(value.trim().toLowerCase()))
+            return  (w.name.toLowerCase().startsWith(value.trim().toLowerCase())) || 
+                    (w.category.toLowerCase().startsWith(value.trim().toLowerCase()) ||
+                    (w.vendor.toLowerCase().startsWith(value.trim().toLowerCase())))
         })
         this.setState({ filteredProducts: searchFilter })
         console.log(searchFilter)
@@ -66,6 +70,7 @@ class AllProducts extends React.Component {
                         <Card.Subtitle>Price : {product.price}</Card.Subtitle>
                         <Card.Text>
                             Category : {product.category}<br></br>
+                            Vendor : {product.vendor} <br></br>
                             Quantity : {product.quantity}<br></br>
                             Stock : {product.stock}<br />
                         </Card.Text>
@@ -91,13 +96,14 @@ class AllProducts extends React.Component {
                         <Card.Subtitle>Price : {product.price}</Card.Subtitle>
                         <Card.Text>
                             Category : {product.category}<br></br>
+                            Vendor : {product.vendor} <br></br>
                             Quantity : {product.quantity}<br></br>
                             Stock : {product.stock}<br />
                         </Card.Text>
                         <Link to='/edit'>
-                            <Button variant="primary" onClick={() => this.editProduct(product)}>Edit</Button>
+                            <Button variant="primary" onClick={()=>this.editProduct(product)}>Edit</Button>
                         </Link> &nbsp;
-                           <Button variant="danger" onClick={() => this.deleteProduct(product)}>Delete</Button>
+                           <Button variant="danger" onClick={()=>this.deleteProduct(product)}>Delete</Button>
                         <br />
                     </Card.Body>
                 </Card>
@@ -119,7 +125,7 @@ class AllProducts extends React.Component {
                 console.log(error)
             })
     }
-
+   
     render() {
         return (
             <div>
@@ -135,16 +141,14 @@ function convertStoreToProps(store) {
     console.log("Received complete store")
     console.log(store)
     return {
-        products: store.allproducts,
-        product: store.deleteclicked,
+        products: store.allproducts
     }
 }
 
 function convertEventToProps(dispatch) {
     return bindActionCreators({
         clickedProduct: productClickedBroadcast,
-        sendAllProduct: allproducts,
-        deleteProduct: deleteProductBroadcast
+        sendAllProduct: allproducts
     }, dispatch)
 }
 
