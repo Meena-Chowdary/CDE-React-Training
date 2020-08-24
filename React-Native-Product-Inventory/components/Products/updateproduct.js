@@ -1,68 +1,71 @@
-import React, { useState } from 'react';
-import { View, Text, Picker } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Picker, Button } from 'react-native';
+import {TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 import { globalstyles } from '../globalstyles/globalstyles';
 
-export default function AddProduct(props) {
 
-  console.log(props)
-  const [name, setName] = useState('');
-  const [image,setImage] = useState('')
-  const [price, setPrice] = useState('');
-  const [category, setCategory] = useState('');
-  const [stock, setStock] = useState('');
-  const [quantity, setQuantity] = useState('');
+export default function UpdateProduct({ route, navigation }) {
 
-  const addProduct = () => {
-    var newProduct = {
-      name,
-      image,
-      price,
-      category,
-      quantity,
-      stock
+    const { items } = route.params
+    const [name, setName] = useState(items.name);
+    const [image, setImage] = useState(items.image)
+    const [price, setPrice] = useState(items.price);
+    const [category, setCategory] = useState(items.category);
+    const [stock, setStock] = useState(items.stock);
+    const [quantity, setQuantity] = useState(items.quantity);
+
+    const submit = () => {
+        let productBody = {
+            "image": image,
+            "name": name,
+            "quantity": quantity,
+            "category": category,
+            "price": price,
+            "stock": stock
+        }
+        axios.put("http://localhost:3000/products/" + items.id, productBody)
+            .then(response => {
+                console.log(response)
+                console.log("Done")
+                navigation.push("Home")
+            }, error => {
+                console.log(error)
+            })
     }
-    
-    //axios.post('https://my-json-server.typicode.com/Meena-Chowdary/CDE-React-Training/products', newProduct)
-    axios.post('http://localhost:3000/products',newProduct)
-      .then(response => {
-          props.route.params.addProducts(newProduct);
-          alert('Product Added')
-          props.navigation.pop()
-      }).catch(err => {
-        console.log(err)
-        alert('Try again later')
-      })
-    
-  }
-  return (
-    <View style={globalstyles.container}>
+
+    return (
+        <View style={globalstyles.container}>
       <Text style={globalstyles.headerStyle}>Add Product</Text>
       <TextInput
         style={globalstyles.inputBoxStyle}
+        defaultValue ={name}
         autoFocus placeholder="Enter Product Name"
         autoFocus onChangeText={value => setName(value)}>
       </TextInput>
       <TextInput
+        defaultValue={image}
         style={globalstyles.inputBoxStyle}
         placeholder="Enter Product Image URL"
         onChangeText={value => setImage(value)}>
       </TextInput>
 
       <TextInput
+        defaultValue={price}
         style={globalstyles.inputBoxStyle}
         placeholder="enter product price"
         keyboardType='numeric' onChangeText={value => setPrice(value)}>
       </TextInput>
 
       <TextInput
+      defaultValue={quantity}
         style={globalstyles.inputBoxStyle}
         placeholder="enter product quantity"
         keyboardType='numeric' onChangeText={value => setQuantity(value)}>
       </TextInput>
 
       <Picker style={globalstyles.pickerStyle}
+        defaultValue={category}
         selectedValue={category}
         onValueChange={currentCategory => setCategory(currentCategory)}>
         <Picker.Item label="--select--" value="--select--" />
@@ -72,6 +75,7 @@ export default function AddProduct(props) {
       </Picker>
 
       <Picker style={globalstyles.pickerStyle}
+        defaultValue={stock}
         selectedValue={stock}
         onValueChange={stock => setStock(stock)}>
         <Picker.Item label="--select--" value="--select--" />
@@ -79,8 +83,8 @@ export default function AddProduct(props) {
         <Picker.Item label="No" value="No" />
       </Picker>
 
-      <TouchableOpacity onPress={() => addProduct()}>
-        <Text style={globalstyles.addBtnStyle}>Add Product</Text>
+      <TouchableOpacity onPress={() => submit()}>
+        <Text style={globalstyles.addBtnStyle}>Update Product</Text>
       </TouchableOpacity>
     </View>);
-};
+}

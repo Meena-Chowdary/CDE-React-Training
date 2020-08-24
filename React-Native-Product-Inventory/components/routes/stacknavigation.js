@@ -5,6 +5,7 @@ import Products from '../Products/products';
 import ProductDetails from '../Products/productdetails';
 
 import AddProduct from '../Products/addproduct';
+import UpdateProduct from '../Products/updateproduct';
 
 const Stack = createStackNavigator()
 
@@ -22,6 +23,7 @@ function MyStackNavigator(){
                 <Stack.Screen name="Home" component={Products}></Stack.Screen>
                 <Stack.Screen name="ProductDetails" component={ProductDetails}></Stack.Screen>
                 <Stack.Screen name="Add" component={AddProduct}></Stack.Screen>
+                <Stack.Screen name="Update" component={UpdateProduct}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )

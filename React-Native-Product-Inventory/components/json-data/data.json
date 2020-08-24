@@ -1,93 +1,94 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Samsung-Galaxy-Pro",
-      "image": "mob1.jpg",
-      "category": "Mobiles",
-      "price": "22000",
-      "quantity": "12",
-      "stock": "Yes"
-    },
-    {
-      "id": 10,
-      "name": "One-Plus",
-      "image": "mob2.jpg",
-      "category": "Mobiles",
-      "price": "12000",
-      "quantity": "6",
-      "stock": "Yes"
-    },
-    {
-      "id": 12,
-      "name": "HP-Pavilion",
-      "image": "lap2.jpg",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81msxwF5XoL._SX466_.jpg",
+      "name": "HP Laptop",
+      "quantity": "21",
       "category": "Laptops",
-      "price": "125000",
-      "quantity": "1",
-      "stock": "Yes"
-    },
-    {
-      "id": 13,
-      "name": "Cannon-Camera",
-      "image": "cannon.jpg",
-      "category": "Cameras",
-      "price": "9000",
-      "quantity": "1",
-      "stock": "Yes"
-    },
-    {
-      "id": 14,
-      "name": "Dell-Inspiron",
-      "image": "lap1.jpg",
-      "category": "Laptops",
-      "price": "84938",
-      "quantity": "12",
-      "stock": "Yes"
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "username": "meena@gmail.com",
-      "password": "123",
-      "confirmpassword": "123"
-    },
-    {
-      "username": "abc@gmail.com",
-      "password": "abc",
-      "confirmpassword": "abc",
-      "id": 2
-    },
-    {
-      "username": "cts@cognizant.com",
-      "password": "cts",
-      "confirmpassword": "cts",
-      "id": 3
-    },
-    {
-      "username": "admin@gmail.com",
-      "password": "admin",
-      "confirmpassword": "admin",
+      "price": "89091",
+      "stock": "Yes",
       "id": 4
     },
     {
-      "username": "react@gmail.com",
-      "password": "react",
-      "confirmpassword": "react",
-      "id": 5
-    },
-    {
-      "username": "user@gmail.com",
-      "password": "user",
-      "confirmpassword": "user",
+      "image": "https://www.asus.com/media/global/products/dmblfias2n3uygim/P_setting_fff_1_90_end_600.png",
+      "name": "ASUS Classic",
+      "quantity": 12,
+      "category": "Laptops",
+      "price": 51000,
+      "stock": "Yes",
       "id": 6
     },
     {
-      "username": "redux@gmail.com",
-      "password": "redux",
-      "confirmpassword": "redux",
+      "image": "https://i.pinimg.com/originals/a2/d9/f2/a2d9f24d12f6a429e4e84261b8d1255e.jpg",
+      "name": "Cannon EOS",
+      "quantity": 4,
+      "category": "Cameras",
+      "price": 28000,
+      "stock": "Yes",
       "id": 7
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1547043904-a62fe1c81e8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+      "name": "Sony Camera",
+      "quantity": 3,
+      "category": "Cameras",
+      "price": 30000,
+      "stock": "Yes",
+      "id": 8
+    },
+    {
+      "image": "https://i.dell.com/sites/csimages/App-Merchandizing_Images/all/xps-13-7390-thumbnail-v2.jpg",
+      "name": "Dell XPS 13",
+      "quantity": 4,
+      "category": "Laptops",
+      "price": 149000,
+      "stock": "Yes",
+      "id": 11
+    },
+    {
+      "image": "https://images-na.ssl-images-amazon.com/images/I/51DE4FICRGL.jpg",
+      "name": "Nikon D5600",
+      "quantity": 5,
+      "category": "Cameras",
+      "price": 50100,
+      "stock": "Yes",
+      "id": 12
+    },
+    {
+      "name": "Samsung",
+      "image": "https://i.gadgets360cdn.com/products/large/1555507135_635_samsung_galaxy_a60.jpg",
+      "price": "15000",
+      "category": "Mobiles",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 13
+    },
+    {
+      "name": "Samsung",
+      "image": "https://www.asus.com/media/global/products/dmblfias2n3uygim/P_setting_fff_1_90_end_600.png",
+      "price": "1",
+      "category": "Mobiles",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 14
+    },
+    {
+      "name": "Samsung Galaxy",
+      "image": "https://i.gadgets360cdn.com/products/large/1555507135_635_samsung_galaxy_a60.jpg",
+      "price": "15000",
+      "category": "Mobiles",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 15
+    },
+    {
+      "name": "Samsung Galaxy",
+      "image": "https://i.gadgets360cdn.com/products/large/1555507135_635_samsung_galaxy_a60.jpg",
+      "price": "15000",
+      "category": "Mobiles",
+      "quantity": "1",
+      "stock": "Yes",
+      "id": 16
     }
   ]
 }

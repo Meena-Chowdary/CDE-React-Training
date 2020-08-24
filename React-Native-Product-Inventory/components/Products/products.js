@@ -10,8 +10,9 @@ export default function Products({navigation}) {
     const [prevProducts, setPrevProducts] = useState([])
 
     useEffect(() => {
-            axios.get('https://my-json-server.typicode.com/Meena-Chowdary/CDE-React-Training/products')
-            .then(response => {
+           // axios.get('https://my-json-server.typicode.com/Meena-Chowdary/CDE-React-Training/products')
+           axios.get('http://localhost:3000/products') 
+           .then(response => {
                 console.log(response.data);
                 setProducts(response.data)
                 setPrevProducts(response.data)
@@ -43,7 +44,7 @@ export default function Products({navigation}) {
                 {
                     products.map(product => (
                         <View style={StyleSheet.cardContent} key={product.id.toString()}>
-                            <TouchableOpacity onPress={()=>navigation.navigate('ProductDetails', product)}>
+                            <TouchableOpacity onPress={()=>navigation.navigate('ProductDetails', {item : product})}>
                                 <Card>
                                 <Image
                                     source={{ uri: product.image }}
