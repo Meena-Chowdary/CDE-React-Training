@@ -7,7 +7,7 @@
       "category": "Mobiles",
       "vendor": "Flipkart",
       "price": "25000",
-      "quantity": "12",
+      "quantity": "8",
       "stock": "Yes"
     },
     {
@@ -31,14 +31,14 @@
       "stock": "Yes"
     },
     {
+      "id": 4,
       "name": "Asus",
       "image": "mob4.jpg",
-      "price": "45000",
       "category": "Mobiles",
       "vendor": "Amazon",
-      "quantity": "10",
-      "stock": "Yes",
-      "id": 4
+      "price": "35000",
+      "quantity": "12",
+      "stock": "Yes"
     }
   ],
   "users": [
