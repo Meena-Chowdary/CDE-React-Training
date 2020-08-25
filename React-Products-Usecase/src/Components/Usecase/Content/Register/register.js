@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Link } from 'react-router-dom';
 import './register.css';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -83,7 +83,7 @@ class Register extends React.Component {
         }
         return (
             <div style={bodyStyle}>
-                <div class="register">
+                <div className="register">
                     <form name="form" noValidate>
                         <h3>Register</h3>
                         <div>
@@ -104,9 +104,10 @@ class Register extends React.Component {
                                 placeholder="Confirm Password *" onChange={this.getConfirmPassword} noValidate required /><br />
                             {this.state.invalidConfirmPassword && <span className='error'>Confirm Password should match with Password</span>}
                         </div><br />
-                        <Button color="info" onClick={this.signUp} disabled={this.state.validUser}>
+                        {/* <Button color="info" onClick={this.signUp} disabled={this.state.validUser}>
                             Register
-                            </Button>
+                            </Button> */}
+                            <button data-testid="signup" onClick={this.signUp}  disabled={this.state.buttonStatus}>Create Account</button>
                         <br></br>
                     </form>
                 </div>

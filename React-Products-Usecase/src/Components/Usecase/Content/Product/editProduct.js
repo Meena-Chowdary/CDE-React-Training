@@ -13,7 +13,7 @@ class EditProduct extends React.Component {
         super(props)
         console.log(this.props);
         console.log(this.props.location);
-        console.log(this.props.location.state);
+        //console.log(this.props.location.state);
         this.state = {
             productName: '',
             productPrice: 0,
@@ -78,7 +78,7 @@ class EditProduct extends React.Component {
     }
 
     componentWillMount() {
-        if (this.props.location.state !== undefined) {
+        // if (this.props.location.state !== undefined) {
             axios.get('http://localhost:3000/products/' + this.props.location.state.myid)
                 .then(response => {
                     //console.log(response);
@@ -94,7 +94,6 @@ class EditProduct extends React.Component {
                 }, error => {
                     console.error(error);
                 })
-        }
     }
 
     getName = (event) => {
@@ -159,7 +158,7 @@ class EditProduct extends React.Component {
             )
         }
         return (
-            <div>
+            <div id="edit">
                 <form onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
                     <h3>Edit Product</h3>
                     <div>
@@ -220,13 +219,13 @@ class EditProduct extends React.Component {
                         )}
                     </div><br />
                     <div>
-                        <Button color="secondary" style={{float:'center'}} disabled={this.state.buttonStatus} onClick={this.editProduct}>Save</Button>
-                   
-                    <Link style={{float:'right'}}to="/product">
+                        {/* <Button color="secondary" style={{float:'center'}} disabled={this.state.buttonStatus} onClick={this.editProduct}>Save</Button> */}
+                        <button id="addbutton" onClick={this.editProduct} disabled={this.state.buttonStatus}>Save</button>
+                    {/* <Link style={{float:'right'}}to="/product">
                         <Button color="danger">
                             Cancel
                             </Button>
-                    </Link>
+                    </Link> */}
                     </div>
                     <br/>
                 </form>

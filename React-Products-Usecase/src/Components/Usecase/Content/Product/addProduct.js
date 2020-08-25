@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import axios from "axios";
-import { Button } from "react-bootstrap";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 const validateForm = errors => {
     let valid = true;
@@ -133,9 +133,9 @@ class AddProduct extends React.Component {
             display: 'inline-block'
         }
         return (
-            <div>
-                <form name="form" onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
-                    <h3>Add Product</h3>
+            <div id="add">
+                <form className="form" onChange={this.handleSubmit} style={{ textAlign: 'center', margin: '60px', backgroundColor: '#f2f2f2', padding: '20px' }}>
+                    <h3 data-testid='h3'>Add Product</h3>
                     <div className="name">
                         <label htmlFor="name"> Product Name</label> &emsp;  &emsp;
                             <input type="text" style={textStyle} id="name" onChange={this.getName}
@@ -203,17 +203,16 @@ class AddProduct extends React.Component {
                         )}
                     </div><br />
                     <div>
-                        <Button variant="primary" disabled={this.state.buttonStatus} onClick={this.addProduct}>Add</Button>
+                        <button data-testid="addbutton" onClick={this.addProduct} disabled={this.state.buttonStatus}>Add</button>
                     </div>
                     <br />
-                    <Link to="/product">
+                    {/* <Link to="/product">
                         <Button variant="danger" >
                             Cancel
                             </Button>
-                    </Link>
+                    </Link> */}
                 </form>
-
-            </div>
+                </div>
         );
     }
 }

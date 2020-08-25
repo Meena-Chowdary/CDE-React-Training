@@ -146,7 +146,7 @@ class Products extends React.Component {
         return (
             <div style={style}>
                 <input type="text" name="search" style={elementStyle} placeholder="Enter item to be search" onChange={this.search} />&ensp;
-                <label>Category  </label> &ensp;
+                <label data-testid='label'>Category  </label> &ensp;
                 <select id="category" name="Category :"
                     defaultValue={this.state.selectValue} style={{ width: '15%' }} onChange={this.categoryFilter}>
                     <option value="" selected={true}>Select</option>
