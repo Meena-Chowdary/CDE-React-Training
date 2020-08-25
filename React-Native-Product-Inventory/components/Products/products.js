@@ -12,7 +12,7 @@ export default function Products({ navigation }) {
     useEffect(() => {
         axios.get('http://localhost:3000/products')
             .then(response => {
-                console.log(response.data);
+               // console.log(response.data);
                 setProducts(response.data)
                 setFilter(response.data)
             }, error => {

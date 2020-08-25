@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Picker } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, Picker,TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { globalstyles } from '../globalstyles/globalstyles';
 
